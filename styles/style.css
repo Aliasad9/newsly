@@ -13,9 +13,10 @@
 }
 
 .main-news-card {
-  background-image: url("../assets/home-image-1.jpg");
+  background-image: url("../assets/home-image-9.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  height: 500px;
 }
 
 h1,
@@ -75,6 +76,14 @@ h6 {
 .news-post-meta {
   margin-bottom: 1.25rem;
   color: #727272;
+}
+
+.advertise-container {
+  background-image: url("../assets/home-image-10.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem 1rem 2rem 1rem;
 }
 
 /* Footer */
