@@ -924,53 +924,6 @@ include_once('inc/header.php');
     </main>
     <!-- /.container -->
 
-    <!-- Footer -->
-    <footer class="container-fluid px-5 py-5 footer">
-      <div class="row footer-container">
-        <div class="col-12 col-md">
-          <span class="display-6">Newsly</span>
-          <small class="d-block mb-3 text-muted">&copy; 2020-2021</small>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Categories</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="link-secondary" href="#">Politics</a></li>
-            <li><a class="link-secondary" href="#">Fashion</a></li>
-            <li><a class="link-secondary" href="#">Sports</a></li>
-            <li><a class="link-secondary" href="#">Music</a></li>
-            <li><a class="link-secondary" href="#">Weather</a></li>
-            <li><a class="link-secondary" href="#">Technology</a></li>
-            <li><a class="link-secondary" href="#">Business</a></li>
-            <li><a class="link-secondary" href="#">Entertainment</a></li>
-          </ul>
-        </div>
-
-        <div class="col-6 col-md">
-          <h5>Developers</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="link-secondary" href="#">Fahad</a></li>
-            <li><a class="link-secondary" href="#">Ali</a></li>
-            <li><a class="link-secondary" href="#">Ahmed</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>About</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="link-secondary" href="#">Team</a></li>
-            <li><a class="link-secondary" href="#">About</a></li>
-            <li><a class="link-secondary" href="#">Privacy</a></li>
-            <li><a class="link-secondary" href="#">Terms</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Social</h5>
-          <ol class="list-unstyled">
-            <li><a class="link-secondary" href="#">GitHub</a></li>
-            <li><a class="link-secondary" href="#">Twitter</a></li>
-            <li><a class="link-secondary" href="#">Facebook</a></li>
-          </ol>
-        </div>
-      </div>
-    </footer>
+<?php include_once('inc/footer.html')?>
   </body>
 </html>
