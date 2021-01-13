@@ -10,11 +10,10 @@ include_once('inc/header.php');
 include_once ('../../inc/navbar.html')
 ?>
 
-    <main class="container mt-5">
+    <main class="container">
       <!-- Big Featured Card -->
       <div
-        class="p-4 p-md-5 mb-4 text-white rounded bg-dark main-news-card d-flex align-items-center"
-      >
+        class="p-4 p-md-5 mb-4 text-white rounded bg-dark main-news-card d-flex align-items-center">
         <div class="col-md-6 px-0">
           <h1 class="display-4 font-italic">
             Title of a longer featured news post
@@ -115,7 +114,7 @@ include_once ('../../inc/navbar.html')
         <div
           class="section-heading d-flex justify-content-between align-items-center py-4"
         >
-          <h3 class="font-italic">TPolitics</h3>
+          <h3 class="font-italic">Politics</h3>
           <a href="#" class="fw-bold"><h6>More Stories</h6></a>
         </div>
 

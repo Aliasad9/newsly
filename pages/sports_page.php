@@ -10,7 +10,7 @@ include_once('../inc/header.php');
 include_once ('../inc/navbar.html')
 ?>
 
-      <main class="container mt-5">
+      <main class="container">
         <!-- Big Featured Card -->
         <div class="mb-4 text-white rounded bg-dark main-sports-card">
           <div class="wrapper p-4 p-md-5 d-flex align-items-end">
