@@ -6,35 +6,9 @@ include_once('inc/header.php');
 ?>
   <body>
     <div class="container">
-      <!-- Header -->
-      <header class="news-header py-4">
-        <div class="row flex-nowrap justify-content-center align-items-center">
-          <div class="col-4 text-center">
-            <a class="news-header-logo text-dark" href="./index.php">Newsly</a>
-          </div>
-        </div>
-      </header>
-
-      <!-- Navbar -->
-      <div class="nav-scroller py-2 mb-3">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="#">Politics</a>
-          <a class="p-2 link-secondary" href="#">Fashion</a>
-          <a class="p-2 link-secondary" href="./pages/sports_page.php"
-            >Sports</a
-          >
-          <a class="p-2 link-secondary" href="#">Music</a>
-          <a class="p-2 link-secondary" href="#">Weather</a>
-          <a class="p-2 link-secondary" href="#">Technology</a>
-          <a class="p-2 link-secondary" href="#">Business</a>
-          <a class="p-2 link-secondary" href="#">Entertainment</a>
-          <!-- <a class="p-2 link-secondary" href="#">Science</a>
-          <a class="p-2 link-secondary" href="#">Health</a>
-          <a class="p-2 link-secondary" href="#">Style</a>
-          <a class="p-2 link-secondary" href="#">Travel</a> -->
-        </nav>
-      </div>
-    </div>
+<?php
+include_once ('../../inc/navbar.html')
+?>
 
     <main class="container mt-5">
       <!-- Big Featured Card -->
