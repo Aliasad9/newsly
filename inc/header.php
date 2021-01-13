@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Bootstrap News Website Theme" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Bootstrap News Website Theme"/>
     <title><?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
@@ -13,7 +13,7 @@
             crossorigin="anonymous"
     />
 
-    <meta name="theme-color" content="#7952b3" />
+    <meta name="theme-color" content="#7952b3"/>
 
     <!-- Custom styles for this template -->
     <link
@@ -22,7 +22,7 @@
     />
     <!-- Custom styles for this template -->
 
-    <link href="/newsly/styles/style.css"  type='text/css' rel="stylesheet" />
+    <link href="/newsly/styles/style.css" type='text/css' rel="stylesheet"/>
 </head>
 
 

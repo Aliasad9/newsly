@@ -1,193 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title="News Article";//TODO: replace it with news name
+$title = "News Article";//TODO: replace it with news name
 include_once('../../inc/header.php');
 ?>
-  <body>
-    <div class="container">
-<?php
-include_once ('../../inc/navbar.html')
-?>
+<body>
+<div class="container">
+    <?php
+    include_once('../../inc/navbar.html')
+    ?>
 
-      <!-- Big Featured Card -->
-      <div class="mb-4 mt-3 text-white rounded bg-dark main-article-card"></div>
+    <!-- Big Featured Card -->
+    <div class="mb-4 mt-3 text-white rounded bg-dark main-article-card"></div>
 
-      <p class="text-muted fst-italic">
+    <p class="text-muted fst-italic">
         Scenes from the Camp Nou as Messi lights up the atmosphere.
-      </p>
+    </p>
 
-      <!-- Article Header -->
-      <div class="article-header">
+    <!-- Article Header -->
+    <div class="article-header">
         <h1 class="display-5">
-          Messi scores 4 past Neuer to give the Catalans a crucial 5-0 win over
-          Bayern
+            Messi scores 4 past Neuer to give the Catalans a crucial 5-0 win over
+            Bayern
         </h1>
-      </div>
-
-      <!-- Author Info -->
-      <div class="author-info row mt-5">
-        <div class="info-container row mx-2">
-          <div class="col-6 author-img"></div>
-          <div
-            class="col-6 author-details-sm d-flex flex-column justify-content-center"
-          >
-            <p class="fw-bold my-0 author-name">John Doe</p>
-            <p class="text-muted my-0">
-              Published on <span class="fw-bold">Jan 9, 2021</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <hr size="3" class="mt-3" />
-
-      <!-- Tag -->
-      <p class="fst-italic fw-bold fs-6 my-1">
-        Category: <span class="text-success">Sports</span>
-      </p>
-      <!-- Article Content -->
-      <div class="content my-4">
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
-          at deleniti quam asperiores, ducimus recusandae? Fuga cumque molestiae
-          consequuntur, dolores quidem dolorem ratione adipisci ex sit non unde
-          nisi aliquid, quod facere? Debitis voluptas iure minus fugiat dolores
-          a blanditiis optio perspiciatis dolorum beatae. Nihil quasi veritatis
-          aspernatur repellendus a molestiae deleniti eligendi neque est facilis
-          nemo, eveniet aliquid, magnam nulla illo perspiciatis similique. Sunt
-          voluptatum atque libero tempora iste assumenda commodi, dolorum
-          debitis quam eaque temporibus mollitia delectus laboriosam! Recusandae
-          quis ratione, porro natus temporibus corporis voluptates cum. Ducimus
-          assumenda similique distinctio eligendi. Assumenda numquam optio
-          officia natus consectetur aspernatur fuga officiis, est hic,
-          repellendus neque quidem mollitia. Illo animi sit quia blanditiis
-          dolore, laudantium eum quae neque in.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
-          at deleniti quam asperiores, ducimus recusandae? Fuga cumque molestiae
-          consequuntur, dolores quidem dolorem ratione adipisci ex sit non unde
-          nisi aliquid, quod facere? Debitis voluptas iure minus fugiat dolores
-          a blanditiis optio perspiciatis dolorum beatae. Nihil quasi veritatis
-          aspernatur repellendus a molestiae deleniti eligendi neque est facilis
-          nemo, eveniet aliquid, magnam nulla illo perspiciatis similique. Sunt
-          voluptatum atque libero tempora iste assumenda commodi, dolorum
-          debitis quam eaque temporibus mollitia delectus laboriosam! Recusandae
-          quis ratione, porro natus temporibus corporis voluptates cum. Ducimus
-          assumenda similique distinctio eligendi. Assumenda numquam optio
-          officia natus consectetur aspernatur fuga officiis, est hic,
-          repellendus neque quidem mollitia. Illo animi sit quia blanditiis
-          dolore, laudantium eum quae neque in.
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
-          accusantium autem, nobis possimus ducimus dolore vel, sed rem
-          inventore modi harum amet cum, cupiditate consequatur magni nisi
-          impedit veniam nam rerum saepe provident. Tempore placeat eligendi
-          earum quae, accusantium, cum adipisci perspiciatis at nisi illo
-          accusamus a iusto tenetur alias voluptate modi magni dolorem quasi
-          molestias consectetur fugiat ut nostrum! Dolores blanditiis eaque est
-          nisi veniam autem, optio tempora beatae aspernatur sed? Vel hic soluta
-          adipisci corrupti ratione voluptatem laborum error odit eum repellat
-          eaque officia, fuga at non perferendis, blanditiis nulla. Atque
-          consequatur a voluptate numquam blanditiis sit quas.
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
-          asperiores maxime tempore commodi mollitia! Quo veniam fugit atque,
-          aliquid quidem corporis dolor accusantium voluptates pariatur facere,
-          repellat quas ipsum ut, assumenda dolores! Assumenda exercitationem
-          debitis voluptatem fugit. Eos sint qui dolores laboriosam impedit
-          aperiam id, suscipit quas aut, autem fugiat! Omnis perferendis quae
-          quas quod voluptatem excepturi reiciendis nobis earum non sunt esse
-          debitis animi eos officiis, minima labore totam ullam voluptatum
-          accusamus. Placeat adipisci ut, reprehenderit sapiente architecto
-          veritatis!
-        </p>
-      </div>
-
-      <!-- More From Sports -->
-      <div class="row mb-4">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
-          <h3 class="font-italic">More From Sports</h3>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img
-              src="../../assets/sports-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-success">Design</strong>
-              <h5 class="card-title">Card title</h5>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                corrupti. Libero, architecto eveniet.
-              </p>
-            </div>
-
-            <div class="card-body">
-              <a href="#" class="card-link">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img
-              src="../../assets/sports-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-warning">Design</strong>
-              <h5 class="card-title">Card title</h5>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                corrupti. Libero, architecto eveniet.
-              </p>
-            </div>
-
-            <div class="card-body">
-              <a href="#" class="card-link">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img
-              src="../../assets/sports-image-5.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-primary">Design</strong>
-              <h5 class="card-title">Card title</h5>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                corrupti. Libero, architecto eveniet.
-              </p>
-            </div>
-
-            <div class="card-body">
-              <a href="#" class="card-link">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-<?php include_once('../../inc/footer.html')?>
+    <!-- Author Info -->
+    <div class="author-info row mt-5">
+        <div class="info-container row mx-2">
+            <div class="col-6 author-img"></div>
+            <div
+                    class="col-6 author-details-sm d-flex flex-column justify-content-center"
+            >
+                <p class="fw-bold my-0 author-name">John Doe</p>
+                <p class="text-muted my-0">
+                    Published on <span class="fw-bold">Jan 9, 2021</span>
+                </p>
+            </div>
+        </div>
+    </div>
 
-  </body>
+    <hr size="3" class="mt-3"/>
+
+    <!-- Tag -->
+    <p class="fst-italic fw-bold fs-6 my-1">
+        Category: <span class="text-success">Sports</span>
+    </p>
+    <!-- Article Content -->
+    <div class="content my-4">
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
+            at deleniti quam asperiores, ducimus recusandae? Fuga cumque molestiae
+            consequuntur, dolores quidem dolorem ratione adipisci ex sit non unde
+            nisi aliquid, quod facere? Debitis voluptas iure minus fugiat dolores
+            a blanditiis optio perspiciatis dolorum beatae. Nihil quasi veritatis
+            aspernatur repellendus a molestiae deleniti eligendi neque est facilis
+            nemo, eveniet aliquid, magnam nulla illo perspiciatis similique. Sunt
+            voluptatum atque libero tempora iste assumenda commodi, dolorum
+            debitis quam eaque temporibus mollitia delectus laboriosam! Recusandae
+            quis ratione, porro natus temporibus corporis voluptates cum. Ducimus
+            assumenda similique distinctio eligendi. Assumenda numquam optio
+            officia natus consectetur aspernatur fuga officiis, est hic,
+            repellendus neque quidem mollitia. Illo animi sit quia blanditiis
+            dolore, laudantium eum quae neque in.
+        </p>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
+            at deleniti quam asperiores, ducimus recusandae? Fuga cumque molestiae
+            consequuntur, dolores quidem dolorem ratione adipisci ex sit non unde
+            nisi aliquid, quod facere? Debitis voluptas iure minus fugiat dolores
+            a blanditiis optio perspiciatis dolorum beatae. Nihil quasi veritatis
+            aspernatur repellendus a molestiae deleniti eligendi neque est facilis
+            nemo, eveniet aliquid, magnam nulla illo perspiciatis similique. Sunt
+            voluptatum atque libero tempora iste assumenda commodi, dolorum
+            debitis quam eaque temporibus mollitia delectus laboriosam! Recusandae
+            quis ratione, porro natus temporibus corporis voluptates cum. Ducimus
+            assumenda similique distinctio eligendi. Assumenda numquam optio
+            officia natus consectetur aspernatur fuga officiis, est hic,
+            repellendus neque quidem mollitia. Illo animi sit quia blanditiis
+            dolore, laudantium eum quae neque in.
+        </p>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+            accusantium autem, nobis possimus ducimus dolore vel, sed rem
+            inventore modi harum amet cum, cupiditate consequatur magni nisi
+            impedit veniam nam rerum saepe provident. Tempore placeat eligendi
+            earum quae, accusantium, cum adipisci perspiciatis at nisi illo
+            accusamus a iusto tenetur alias voluptate modi magni dolorem quasi
+            molestias consectetur fugiat ut nostrum! Dolores blanditiis eaque est
+            nisi veniam autem, optio tempora beatae aspernatur sed? Vel hic soluta
+            adipisci corrupti ratione voluptatem laborum error odit eum repellat
+            eaque officia, fuga at non perferendis, blanditiis nulla. Atque
+            consequatur a voluptate numquam blanditiis sit quas.
+        </p>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
+            asperiores maxime tempore commodi mollitia! Quo veniam fugit atque,
+            aliquid quidem corporis dolor accusantium voluptates pariatur facere,
+            repellat quas ipsum ut, assumenda dolores! Assumenda exercitationem
+            debitis voluptatem fugit. Eos sint qui dolores laboriosam impedit
+            aperiam id, suscipit quas aut, autem fugiat! Omnis perferendis quae
+            quas quod voluptatem excepturi reiciendis nobis earum non sunt esse
+            debitis animi eos officiis, minima labore totam ullam voluptatum
+            accusamus. Placeat adipisci ut, reprehenderit sapiente architecto
+            veritatis!
+        </p>
+    </div>
+
+    <!-- More From Sports -->
+    <div class="row mb-4">
+        <div
+                class="section-heading d-flex justify-content-between align-items-center py-4"
+        >
+            <h3 class="font-italic">More From Sports</h3>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img
+                        src="../../assets/sports-image-2.jpg"
+                        class="card-img-top"
+                        alt="..."
+                />
+                <div class="card-body">
+                    <strong class="d-inline-block mb-2 text-success">Design</strong>
+                    <h5 class="card-title">Card title</h5>
+                    <div class="mb-1 text-muted">Nov 11</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Nostrum laboriosam consectetur distinctio qui nulla sint iure
+                        corrupti. Libero, architecto eveniet.
+                    </p>
+                </div>
+
+                <div class="card-body">
+                    <a href="#" class="card-link">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img
+                        src="../../assets/sports-image-3.jpg"
+                        class="card-img-top"
+                        alt="..."
+                />
+                <div class="card-body">
+                    <strong class="d-inline-block mb-2 text-warning">Design</strong>
+                    <h5 class="card-title">Card title</h5>
+                    <div class="mb-1 text-muted">Nov 11</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Nostrum laboriosam consectetur distinctio qui nulla sint iure
+                        corrupti. Libero, architecto eveniet.
+                    </p>
+                </div>
+
+                <div class="card-body">
+                    <a href="#" class="card-link">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img
+                        src="../../assets/sports-image-5.jpg"
+                        class="card-img-top"
+                        alt="..."
+                />
+                <div class="card-body">
+                    <strong class="d-inline-block mb-2 text-primary">Design</strong>
+                    <h5 class="card-title">Card title</h5>
+                    <div class="mb-1 text-muted">Nov 11</div>
+                    <p class="card-text">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Nostrum laboriosam consectetur distinctio qui nulla sint iure
+                        corrupti. Libero, architecto eveniet.
+                    </p>
+                </div>
+
+                <div class="card-body">
+                    <a href="#" class="card-link">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include_once('../../inc/footer.html') ?>
+
+</body>
 </html>
