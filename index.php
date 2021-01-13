@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title="Newsly";
+$title = "Newsly";
 include_once('inc/header.php');
 ?>
-  <body>
-    <div class="container">
-<?php
-include_once ('./inc/navbar.html')
-?>
+
+<body>
+  <div class="container">
+    <?php
+    include_once('./inc/navbar.html')
+    ?>
 
     <main class="container">
       <!-- Big Featured Card -->
-      <div
-        class="p-4 p-md-5 mb-4 text-white rounded bg-dark main-news-card d-flex align-items-center">
+      <div class="p-4 p-md-5 mb-4 text-white rounded-3 bg-dark main-news-card d-flex align-items-center">
         <div class="col-md-6 px-0">
           <h1 class="display-4 font-italic">
             Title of a longer featured news post
@@ -31,20 +31,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Trending Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Trending Stories</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -63,11 +59,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -86,11 +78,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -111,20 +99,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Politics Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Politics</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -143,11 +127,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -166,11 +146,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -191,20 +167,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Fashion Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Fashion</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -223,11 +195,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -246,11 +214,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -271,20 +235,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Sports Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Sports</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -303,11 +263,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -326,11 +282,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -351,20 +303,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Music Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Music</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -383,11 +331,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -406,11 +350,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -431,20 +371,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Weather Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Weather</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -463,11 +399,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -486,11 +418,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -511,20 +439,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Technology Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Tech News</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -543,11 +467,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -566,11 +486,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -591,20 +507,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Business Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Business</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -623,11 +535,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -646,11 +554,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -671,20 +575,16 @@ include_once ('./inc/navbar.html')
 
       <!-- Entertainment Section -->
       <div class="row mb-2">
-        <div
-          class="section-heading d-flex justify-content-between align-items-center py-4"
-        >
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
           <h3 class="font-italic">Entertainment</h3>
-          <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+          <a href="#" class="fw-bold">
+            <h6>More Stories</h6>
+          </a>
         </div>
 
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -703,11 +603,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-warning">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -726,11 +622,7 @@ include_once ('./inc/navbar.html')
         </div>
         <div class="col-md-4">
           <div class="card mb-4">
-            <img
-              src="./assets/home-image-4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Design</strong>
               <h5 class="card-title">Card title</h5>
@@ -756,11 +648,7 @@ include_once ('./inc/navbar.html')
 
           <div class="col-md-5">
             <div class="card mb-4">
-              <img
-                src="./assets/home-image-6.jpg"
-                class="card-img-top img-thumbnail rounded"
-                alt="..."
-              />
+              <img src="./assets/home-image-6.jpg" class="card-img-top img-thumbnail rounded" alt="..." />
               <div class="card-body">
                 <strong class="d-inline-block mb-2 text-primary">Design</strong>
                 <h5 class="card-title">Card title</h5>
@@ -779,11 +667,7 @@ include_once ('./inc/navbar.html')
           </div>
           <div class="col-md-5">
             <div class="card mb-4">
-              <img
-                src="./assets/home-image-3.jpg"
-                class="card-img-top img-thumbnail rounded"
-                alt="..."
-              />
+              <img src="./assets/home-image-3.jpg" class="card-img-top img-thumbnail rounded" alt="..." />
               <div class="card-body">
                 <strong class="d-inline-block mb-2 text-success">Design</strong>
                 <h5 class="card-title">Card title</h5>
@@ -811,11 +695,7 @@ include_once ('./inc/navbar.html')
           <div class="row">
             <div class="col-md-6">
               <div class="card mb-4">
-                <img
-                  src="./assets/home-image-4.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h3 class="card-title">Card title</h3>
 
@@ -835,11 +715,7 @@ include_once ('./inc/navbar.html')
             </div>
             <div class="col-md-6">
               <div class="card mb-4">
-                <img
-                  src="./assets/home-image-7.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/home-image-7.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h3 class="card-title">Card title</h3>
                   <p class="card-text">
@@ -897,6 +773,7 @@ include_once ('./inc/navbar.html')
     </main>
     <!-- /.container -->
 
-<?php include_once('inc/footer.html')?>
-  </body>
+    <?php include_once('inc/footer.html') ?>
+</body>
+
 </html>
