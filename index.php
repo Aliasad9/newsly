@@ -7,7 +7,7 @@ include_once('inc/header.php');
   <body>
     <div class="container">
 <?php
-include_once ('../../inc/navbar.html')
+include_once ('./inc/navbar.html')
 ?>
 
     <main class="container">
