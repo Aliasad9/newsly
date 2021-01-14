@@ -28,8 +28,6 @@
         href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
         rel="stylesheet"
     />
-    <!-- Custom styles for this template -->
-    <link href="/newsly/styles/style.css" type="text/css" rel="stylesheet" />
 
     <!-- CKEditor CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
@@ -80,8 +78,29 @@
 
     <!-- Create CKEditor in textarea -->
     <script>
-        ClassicEditor.create(document.querySelector("#editor")).catch(error => {
+        ClassicEditor.create(document.querySelector("#editor"), {
+            removePlugins: [
+                "Link",
+                "ImageUpload",
+                "Table",
+                "TableToolbar",
+                "MediaEmbed"
+            ],
+            toolbar: [
+                "Heading",
+                "bold",
+                "italic",
+                "bulletedList",
+                "numberedList",
+                "Indent",
+                "blockQuote"
+            ]
+        }).catch(error => {
             console.error(error);
         });
+
+        console.log(
+            ClassicEditor.builtinPlugins.map(plugin => plugin.pluginName)
+        );
     </script>
 </body>
