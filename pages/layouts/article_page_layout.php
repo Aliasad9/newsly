@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = "News Article";//TODO: replace it with news name
-include_once('../../inc/header.php');
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    include_once('../../functions/db_functions.php');
+    include_once('../../config/config.php');
+    $db_instance = new DBClass();
+    $result = $db_instance->getNewsById($pdo, $id);
+    if ($result){
+        $title = $result->title;//TODO: replace it with news name
+        include_once('../../inc/header.php');
+    }else{
+        header('Location: ../../index.php');
+    }
+} else {
+    header('Location: ../../index.php');
+}
+
+
 ?>
 <body>
 <div class="container">
@@ -11,30 +26,34 @@ include_once('../../inc/header.php');
     ?>
 
     <!-- Big Featured Card -->
-    <div class="mb-4 mt-3 text-white rounded bg-dark main-article-card"></div>
+    <div class="mb-4 mt-3 text-white rounded bg-dark main-article-card"
+         style="background-image: url(<?php echo "../../assets/" . $result->cover_image ?>)"></div>
 
-    <p class="text-muted fst-italic">
-        Scenes from the Camp Nou as Messi lights up the atmosphere.
-    </p>
+    <p class="text-muted fst-italic"><?php echo $result->image_caption; ?></p>
 
     <!-- Article Header -->
     <div class="article-header">
         <h1 class="display-5">
-            Messi scores 4 past Neuer to give the Catalans a crucial 5-0 win over
-            Bayern
+            <?php
+            echo $result->title
+            ?>
         </h1>
     </div>
 
     <!-- Author Info -->
     <div class="author-info row mt-5">
         <div class="info-container row mx-2">
-            <div class="col-6 author-img"></div>
+            <div class="col-6 author-img"
+                 style="background-image: url(<?php echo "../../assets/" . $result->author_image ?>)"></div>
             <div
                     class="col-6 author-details-sm d-flex flex-column justify-content-center"
             >
-                <p class="fw-bold my-0 author-name">John Doe</p>
+                <p class="fw-bold my-0 author-name"><?php echo $result->author_name; ?></p>
                 <p class="text-muted my-0">
-                    Published on <span class="fw-bold">Jan 9, 2021</span>
+                    Published on <span class="fw-bold"><?php
+                        include_once('../../functions/utils.php');
+                        echo getFormattedDateTime($result->created_at);
+                        ?></span>
                 </p>
             </div>
         </div>
@@ -44,67 +63,22 @@ include_once('../../inc/header.php');
 
     <!-- Tag -->
     <p class="fst-italic fw-bold fs-6 my-1">
-        Category: <span class="text-success">Sports</span>
+        Category: <span class="text-success"><?php echo $result->name?></span>
     </p>
     <!-- Article Content -->
     <div class="content my-4">
-        <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
-            at deleniti quam asperiores, ducimus recusandae? Fuga cumque molestiae
-            consequuntur, dolores quidem dolorem ratione adipisci ex sit non unde
-            nisi aliquid, quod facere? Debitis voluptas iure minus fugiat dolores
-            a blanditiis optio perspiciatis dolorum beatae. Nihil quasi veritatis
-            aspernatur repellendus a molestiae deleniti eligendi neque est facilis
-            nemo, eveniet aliquid, magnam nulla illo perspiciatis similique. Sunt
-            voluptatum atque libero tempora iste assumenda commodi, dolorum
-            debitis quam eaque temporibus mollitia delectus laboriosam! Recusandae
-            quis ratione, porro natus temporibus corporis voluptates cum. Ducimus
-            assumenda similique distinctio eligendi. Assumenda numquam optio
-            officia natus consectetur aspernatur fuga officiis, est hic,
-            repellendus neque quidem mollitia. Illo animi sit quia blanditiis
-            dolore, laudantium eum quae neque in.
-        </p>
-        <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
-            at deleniti quam asperiores, ducimus recusandae? Fuga cumque molestiae
-            consequuntur, dolores quidem dolorem ratione adipisci ex sit non unde
-            nisi aliquid, quod facere? Debitis voluptas iure minus fugiat dolores
-            a blanditiis optio perspiciatis dolorum beatae. Nihil quasi veritatis
-            aspernatur repellendus a molestiae deleniti eligendi neque est facilis
-            nemo, eveniet aliquid, magnam nulla illo perspiciatis similique. Sunt
-            voluptatum atque libero tempora iste assumenda commodi, dolorum
-            debitis quam eaque temporibus mollitia delectus laboriosam! Recusandae
-            quis ratione, porro natus temporibus corporis voluptates cum. Ducimus
-            assumenda similique distinctio eligendi. Assumenda numquam optio
-            officia natus consectetur aspernatur fuga officiis, est hic,
-            repellendus neque quidem mollitia. Illo animi sit quia blanditiis
-            dolore, laudantium eum quae neque in.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
-            accusantium autem, nobis possimus ducimus dolore vel, sed rem
-            inventore modi harum amet cum, cupiditate consequatur magni nisi
-            impedit veniam nam rerum saepe provident. Tempore placeat eligendi
-            earum quae, accusantium, cum adipisci perspiciatis at nisi illo
-            accusamus a iusto tenetur alias voluptate modi magni dolorem quasi
-            molestias consectetur fugiat ut nostrum! Dolores blanditiis eaque est
-            nisi veniam autem, optio tempora beatae aspernatur sed? Vel hic soluta
-            adipisci corrupti ratione voluptatem laborum error odit eum repellat
-            eaque officia, fuga at non perferendis, blanditiis nulla. Atque
-            consequatur a voluptate numquam blanditiis sit quas.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
-            asperiores maxime tempore commodi mollitia! Quo veniam fugit atque,
-            aliquid quidem corporis dolor accusantium voluptates pariatur facere,
-            repellat quas ipsum ut, assumenda dolores! Assumenda exercitationem
-            debitis voluptatem fugit. Eos sint qui dolores laboriosam impedit
-            aperiam id, suscipit quas aut, autem fugiat! Omnis perferendis quae
-            quas quod voluptatem excepturi reiciendis nobis earum non sunt esse
-            debitis animi eos officiis, minima labore totam ullam voluptatum
-            accusamus. Placeat adipisci ut, reprehenderit sapiente architecto
-            veritatis!
-        </p>
+        <?php
+        foreach(json_decode($result->content, true)['data'] as $text) { //foreach element in $arr
+            if(isset($text['text'])){
+                echo "<p>".$text['text'].'</p>';
+            } elseif (isset($text['heading'])){
+                echo "<h3>".$text['heading'].'</h3>';
+            }else{
+                echo '';
+            }
+        }
+        ?>
+
     </div>
 
     <!-- More From Sports -->

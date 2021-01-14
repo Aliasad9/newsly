@@ -107,7 +107,6 @@ h6 {
 
 /* Article Styles */
 .author-img {
-    background-image: url("../assets/author-img.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
