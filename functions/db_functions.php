@@ -2,9 +2,10 @@
 
 class DBClass
 {
+
     public function getAllNews($pdo)
     {
-        $stmt = $pdo->query('SELECT * FROM news;');
+        $stmt = $pdo->query('SELECT * FROM news JOIN category ON news.category_id = category.id;');
         return $stmt;
     }
 
@@ -26,7 +27,13 @@ class DBClass
             return $news;
         }
     }
-
+    public function getNewsById($pdo, $id){
+        $sql = 'SELECT * FROM news JOIN category ON news.category_id = category.id WHERE news.id= :id;';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        $news = $stmt->fetch();
+        return $news;
+    }
     public function addNewsArticle($pdo, $title, $author_name, $author_info,
                                    $author_image, $cover_image, $image_caption,
                                    $content, $category_id, $tags)
