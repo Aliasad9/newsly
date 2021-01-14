@@ -5,6 +5,7 @@ $title = "Sports";
 include_once('../inc/header.php');
 ?>
 
+
 <body>
   <div class="container">
     <?php
@@ -64,6 +65,7 @@ include_once('../inc/header.php');
                 corrupti. Libero, architecto eveniet.
               </p>
             </div>
+
 
             <div class="card-body">
               <a href="#" class="card-link">Read More</a>
@@ -151,10 +153,13 @@ include_once('../inc/header.php');
                 </p>
               </div>
 
-              <div class="card-body">
-                <a href="#" class="card-link">Read More</a>
-              </div>
+
+                    <div class="card-body">
+                        <a href="#" class="card-link">Read More</a>
+                    </div>
+                </div>
             </div>
+
           </div>
           <div class="col-lg-12 col-md-6">
             <div class="card mb-4">
@@ -169,14 +174,14 @@ include_once('../inc/header.php');
                   iure corrupti. Libero, architecto eveniet.
                 </p>
               </div>
-
-              <div class="card-body">
-                <a href="#" class="card-link">Read More</a>
-              </div>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Read More</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
       </div>
+
 
       <!-- All Stories Section -->
       <div class="row mb-2">
@@ -200,9 +205,10 @@ include_once('../inc/header.php');
 
             <div class="card-body">
               <a href="#" class="card-link">Read More</a>
+
             </div>
-          </div>
         </div>
+
         <div class="col-md-4">
           <div class="card mb-4">
             <img src="../assets/sports-image-3.jpg" class="card-img-top" alt="..." />
@@ -239,9 +245,9 @@ include_once('../inc/header.php');
             <div class="card-body">
               <a href="#" class="card-link">Read More</a>
             </div>
-          </div>
         </div>
       </div>
+
 
       <div class="row mt-2">
         <div class="col-md-4">
@@ -299,9 +305,9 @@ include_once('../inc/header.php');
             <div class="card-body">
               <a href="#" class="card-link">Read More</a>
             </div>
-          </div>
         </div>
       </div>
+
 
       <!-- Upcoming writers -->
       <div class="row my-4">
@@ -350,8 +356,8 @@ include_once('../inc/header.php');
                 <div class="card-body">
                   <a href="#" class="card-link">Read More</a>
                 </div>
-              </div>
             </div>
+
           </div>
         </div>
 
@@ -397,3 +403,4 @@ include_once('../inc/header.php');
 </body>
 
 </html>
+

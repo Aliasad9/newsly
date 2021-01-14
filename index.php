@@ -5,6 +5,7 @@ $title = "Newsly";
 include_once('inc/header.php');
 ?>
 
+
 <body>
   <div class="container">
     <?php
@@ -28,74 +29,51 @@ include_once('inc/header.php');
           </p>
         </div>
       </div>
+        <!-- Trending Section -->
+        <div class="row mb-2">
+            <div
+                    class="section-heading d-flex justify-content-between align-items-center py-4"
+            >
+                <h3 class="font-italic">Trending Stories</h3>
+                <a href="#" class="fw-bold"><h6>More Stories</h6></a>
+            </div>
 
-      <!-- Trending Section -->
-      <div class="row mb-2">
-        <div class="section-heading d-flex justify-content-between align-items-center py-4">
-          <h3 class="font-italic">Trending Stories</h3>
-          <a href="#" class="fw-bold">
-            <h6>More Stories</h6>
-          </a>
+            <?php
+            include_once('functions/db_functions.php');
+            include_once('config/config.php');
+            $db_instance = new DBClass();
+            $rows = $db_instance->getCategoryBasedNews($pdo, 'sports', 3);
+            ?>
+            <?php foreach ($rows as $row): ?>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img
+                                src="/newsly/assets/<?php echo $row->cover_image ?>"
+                                class="card-img-top"
+                                alt="..."
+                        />
+                        <div class="card-body">
+                            <strong class="d-inline-block mb-2 text-success"><?php echo $row->name; ?></strong>
+                            <h5 class="card-title"><?php echo $row->title; ?></h5>
+                            <div class="mb-1 text-muted">
+                                <?php
+                                $str_date = $row->created_at;
+                                $date = new DateTime($str_date);
+                                echo date_format($date, "M j, Y"); ?>
+                            </div>
+                            <p class="card-text">
+                                <?php echo json_decode($row->content, true)['name']; ?>
+                            </p>
+                        </div>
+
+                        <div class="card-body">
+                            <a href="#" class="card-link">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img src="./assets/home-image-2.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-success">Design</strong>
-              <h5 class="card-title">Card title</h5>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                corrupti. Libero, architecto eveniet.
-              </p>
-            </div>
-
-            <div class="card-body">
-              <a href="#" class="card-link">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img src="./assets/home-image-3.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-warning">Design</strong>
-              <h5 class="card-title">Card title</h5>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                corrupti. Libero, architecto eveniet.
-              </p>
-            </div>
-
-            <div class="card-body">
-              <a href="#" class="card-link">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img src="./assets/home-image-4.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <strong class="d-inline-block mb-2 text-primary">Design</strong>
-              <h5 class="card-title">Card title</h5>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                corrupti. Libero, architecto eveniet.
-              </p>
-            </div>
-
-            <div class="card-body">
-              <a href="#" class="card-link">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
+     
 
       <!-- Politics Section -->
       <div class="row mb-2">
@@ -366,8 +344,9 @@ include_once('inc/header.php');
               <a href="#" class="card-link">Read More</a>
             </div>
           </div>
+
         </div>
-      </div>
+
 
       <!-- Weather Section -->
       <div class="row mb-2">
@@ -434,8 +413,9 @@ include_once('inc/header.php');
               <a href="#" class="card-link">Read More</a>
             </div>
           </div>
+
         </div>
-      </div>
+
 
       <!-- Technology Section -->
       <div class="row mb-2">
@@ -502,8 +482,9 @@ include_once('inc/header.php');
               <a href="#" class="card-link">Read More</a>
             </div>
           </div>
+
         </div>
-      </div>
+
 
       <!-- Business Section -->
       <div class="row mb-2">
@@ -570,8 +551,9 @@ include_once('inc/header.php');
               <a href="#" class="card-link">Read More</a>
             </div>
           </div>
+
         </div>
-      </div>
+
 
       <!-- Entertainment Section -->
       <div class="row mb-2">
@@ -640,51 +622,60 @@ include_once('inc/header.php');
           </div>
         </div>
       </div>
+        <!-- Advertise -->
+        <div class="advertise-container mt-4">
+            <div class="row mb-2 mt-2 justify-content-center">
+                <h3 class="pb-4 font-italic text-white">Advertise With Us</h3>
 
-      <!-- Advertise -->
-      <div class="advertise-container mt-4">
-        <div class="row mb-2 mt-2 justify-content-center">
-          <h3 class="pb-4 font-italic text-white">Advertise With Us</h3>
+                <div class="col-md-5">
+                    <div class="card mb-4">
+                        <img
+                                src="./assets/home-image-6.jpg"
+                                class="card-img-top img-thumbnail rounded"
+                                alt="..."
+                        />
+                        <div class="card-body">
+                            <strong class="d-inline-block mb-2 text-primary">Design</strong>
+                            <h5 class="card-title">Card title</h5>
+                            <div class="mb-1 text-muted">Nov 11</div>
+                            <p class="card-text">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
+                                corrupti. Libero, architecto eveniet.
+                            </p>
+                        </div>
 
-          <div class="col-md-5">
-            <div class="card mb-4">
-              <img src="./assets/home-image-6.jpg" class="card-img-top img-thumbnail rounded" alt="..." />
-              <div class="card-body">
-                <strong class="d-inline-block mb-2 text-primary">Design</strong>
-                <h5 class="card-title">Card title</h5>
-                <div class="mb-1 text-muted">Nov 11</div>
-                <p class="card-text">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                  corrupti. Libero, architecto eveniet.
-                </p>
-              </div>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card mb-4">
+                        <img
+                                src="./assets/home-image-3.jpg"
+                                class="card-img-top img-thumbnail rounded"
+                                alt="..."
+                        />
+                        <div class="card-body">
+                            <strong class="d-inline-block mb-2 text-success">Design</strong>
+                            <h5 class="card-title">Card title</h5>
+                            <div class="mb-1 text-muted">Nov 11</div>
+                            <p class="card-text">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
+                                corrupti. Libero, architecto eveniet.
+                            </p>
+                        </div>
 
-              <div class="card-body">
-                <a href="#" class="card-link">Read More</a>
-              </div>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Read More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-5">
-            <div class="card mb-4">
-              <img src="./assets/home-image-3.jpg" class="card-img-top img-thumbnail rounded" alt="..." />
-              <div class="card-body">
-                <strong class="d-inline-block mb-2 text-success">Design</strong>
-                <h5 class="card-title">Card title</h5>
-                <div class="mb-1 text-muted">Nov 11</div>
-                <p class="card-text">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                  corrupti. Libero, architecto eveniet.
-                </p>
-              </div>
-
-              <div class="card-body">
-                <a href="#" class="card-link">Read More</a>
-              </div>
-            </div>
-          </div>
         </div>
+
       </div>
 
       <!-- Upcoming writers -->
