@@ -145,6 +145,15 @@ h6 {
     line-height: 2.3rem;
 }
 
+/* Politics Page */
+.main-politics-card {
+  background-image: url("../assets/politics-image-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+
 @media (min-width: 768px) {
     .display-4 {
         font-size: 3rem;
