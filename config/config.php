@@ -1,5 +1,5 @@
 <?php
-include_once ('env.php');
+include_once ('/wamp64/www/newsly/env.php');
 $HOST = getenv('DB_HOST');
 $NAME = getenv('DB_NAME');
 $USER = getenv('DB_USER');
