@@ -63,17 +63,9 @@ include_once('inc/header.php');
                             </div>
                             <p class="card-text">
                                 <?php
-                                $count = 0;
-                                foreach (json_decode($row->content, true)['data'] as $text) { //foreach element in $arr
-                                    if ($count == 0) {
-                                        if (isset($text['text'])) {
-                                            echo "<p>" . $text['text'] . '</p>';
-                                            $count += 1;
-                                        }
-                                    } else {
-                                        break;
-                                    }
-                                }
+
+                                $htmlContent =json_decode($row->content, true)['data'];
+                                echo getUnformattedTextFromHtml($htmlContent);
                                 ?>
                             </p>
                         </div>

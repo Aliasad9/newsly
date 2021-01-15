@@ -68,15 +68,8 @@ if (isset($_GET['id'])) {
     <!-- Article Content -->
     <div class="content my-4">
         <?php
-        foreach(json_decode($result->content, true)['data'] as $text) { //foreach element in $arr
-            if(isset($text['text'])){
-                echo "<p>".$text['text'].'</p>';
-            } elseif (isset($text['heading'])){
-                echo "<h3>".$text['heading'].'</h3>';
-            }else{
-                echo '';
-            }
-        }
+        $htmlContent =json_decode($result->content, true)['data'];
+        echo $htmlContent;
         ?>
 
     </div>
