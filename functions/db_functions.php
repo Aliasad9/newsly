@@ -9,7 +9,7 @@ class DBClass
                     news.created_at AS created_at, news.author_name AS author_name, news.author_image 
                     AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
                     news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
-                    news JOIN category ON news.category_id = category.id;');
+                    news JOIN category ON news.category_id = category.id ORDER BY news.created_at DESC;');
         return $stmt->fetchAll();
     }
 
@@ -19,7 +19,8 @@ class DBClass
                     news.created_at AS created_at, news.author_name AS author_name, news.author_image 
                     AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
                     news.image_caption AS image_caption, news.tags AS tags, category.name AS name
-                    FROM news JOIN category ON news.category_id = category.id WHERE news.tags LIKE %:tag%';
+                    FROM news JOIN category ON news.category_id = category.id WHERE news.tags LIKE %:tag% 
+                    ORDER BY news.created_at DESC;';
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['tag' => $tag]);
         $news = $stmt->fetchAll();
@@ -33,7 +34,8 @@ class DBClass
                     news.created_at AS created_at, news.author_name AS author_name, news.author_image 
                     AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
                     news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
-                    news JOIN category ON news.category_id = category.id WHERE category.name = :categoryName';
+                    news JOIN category ON news.category_id = category.id WHERE category.name = :categoryName 
+                    ORDER BY created_at DESC; ';
             $stmt = $pdo->prepare($sql);
             $stmt->execute(['categoryName' => $categoryName]);
             $news = $stmt->fetchAll();
@@ -44,7 +46,8 @@ class DBClass
                     news.created_at AS created_at, news.author_name AS author_name, news.author_image 
                     AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
                     news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
-                    news JOIN category ON news.category_id = category.id WHERE category.name = ? LIMIT ?';
+                    news JOIN category ON news.category_id = category.id WHERE category.name = ? 
+                    ORDER BY news.created_at DESC LIMIT ?; ';
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$categoryName, $limit]);
             $news = $stmt->fetchAll();
@@ -68,19 +71,18 @@ class DBClass
 
     public function addNewsArticle($pdo, $title, $author_name, $author_info,
                                    $author_image, $cover_image, $image_caption,
-                                   $content, $category_id, $tags)
+                                   $content, $sub_category_id, $category_id, $tags)
     {
         try {
             $sql = 'INSERT INTO news(title, author_name, author_info, author_image, 
-                 cover_image, image_caption, content, category_id, tags) 
-                 VALUES(?,?, ?, ?,?, ?, ?, ?, ?);';
+                 cover_image, image_caption, content,sub_category_id, category_id, tags) 
+                 VALUES(?,?, ?, ?,?, ?, ?, ?, ?,?);';
             $stmt = $pdo->prepare($sql);
             if ($stmt) {
                 try {
-                    var_dump($stmt);
                     $stmt->execute([$title, $author_name, $author_info,
                         $author_image, $cover_image, $image_caption,
-                        $content, $category_id, $tags]);
+                        $content, $sub_category_id, $category_id, $tags]);
                     $stmt->closeCursor();
                     return true;
                 } catch (Exception $exception) {
@@ -166,6 +168,29 @@ class DBClass
         return $categories;
     }
 
+    public function addContactUs($pdo, $subject, $email, $content)
+    {
+        try {
+            $sql = 'INSERT INTO contact_us( subject,email, content) VALUES(?,?, ?);';
+            $stmt = $pdo->prepare($sql);
+            if ($stmt) {
+                try {
+                    $stmt->execute([$subject, $email, $content]);
+                    $stmt->closeCursor();
+                    return true;
+                } catch (Exception $exception) {
+                    echo $exception;
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            $mes = $e->getMessage();
+            error_log($mes);
+            return false;
+        }
+    }
 }
 
 ?>
