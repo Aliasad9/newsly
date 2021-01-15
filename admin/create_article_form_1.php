@@ -88,9 +88,19 @@
         <div class="mb-3">
             <label class="form-label"> Category</label>
             <select class="form-select" aria-label="category" name="category">
-                <option selected value="3">Politics</option>
-                <option value="4">Fashion</option>
-                <option value="1">Sports</option>
+                <?php
+
+                include_once('../functions/db_functions.php');
+                include_once('../config/config.php');
+                $db_instance = new DBClass();
+                $rows = $db_instance->getCategories($pdo);
+
+                ?>
+
+                <?php foreach ($rows as $row): ?>
+                <option selected
+                        value=<?php echo $row->id; ?>><?php echo $row->name; ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Next Step</button>

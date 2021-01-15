@@ -65,7 +65,7 @@ include_once('inc/header.php');
                                 <?php
 
                                 $htmlContent =json_decode($row->content, true)['data'];
-                                echo getUnformattedTextFromHtml($htmlContent);
+                                echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500);
                                 ?>
                             </p>
                         </div>

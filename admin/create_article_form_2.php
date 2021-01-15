@@ -79,8 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 ?>
                 <?php foreach ($rows as $row): ?>
-                    <?php echo $row->id; ?>
-                    <?php echo $row->name; ?>
                     <option selected
                             value=<?php echo $row->sub_category_id; ?>><?php echo $row->sub_category_name; ?></option>
                 <?php endforeach; ?>
@@ -102,15 +100,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input hidden type="text" class="form-control" name="author-image" id="author-image"
                value="<?php echo $author_image; ?>"/>
         <input hidden type="text" class="form-control" name="author-name" id="author-name"
-               value="<?php echo $_POST['author-name']; ?>"/>
+               value="<?php echo htmlspecialchars($_POST['author-name']); ?>"/>
         <input hidden type="text" class="form-control" name="author-info" id="author-info"
-               value="<?php echo $_POST['author-info']; ?>"/>
+               value="<?php echo htmlspecialchars($_POST['author-info']); ?>"/>
         <input hidden type="text" class="form-control" name="cover-image" id="cover-image"
                value="<?php echo $cover_image; ?>"/>
         <input hidden type="text" class="form-control" name="image-caption" id="image-caption"
-               value="<?php echo $_POST['cover-image-caption'] ?>"/>
+               value="<?php echo htmlspecialchars($_POST['cover-image-caption']) ;?>"/>
         <input hidden type="text" class="form-control" name="category" id="category"
-               value="<?php echo $_POST['category'] ?>"/>
+               value="<?php echo htmlspecialchars($_POST['category']); ?>"/>
 
         <!--            TODO: get previous form data and pass forward-->
         <button type="submit" class="btn btn-primary">
@@ -121,8 +119,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- Create CKEditor in textarea -->
 <script>
-    ClassicEditor.create(document.querySelector("#editor")).catch(error => {
+    ClassicEditor.create(document.querySelector("#editor"), {
+
+        removePlugins: [
+            "Link",
+            "ImageUpload",
+            "Table",
+            "TableToolbar",
+            "MediaEmbed"
+        ],
+        toolbar: [
+            "Heading",
+            "bold",
+            "italic",
+            "bulletedList",
+            "numberedList",
+            "Indent",
+            "blockQuote"
+        ]
+    }).catch(error => {
         console.error(error);
     });
+
+    console.log(
+        ClassicEditor.builtinPlugins.map(plugin => plugin.pluginName)
+    );
 </script>
 </body>
