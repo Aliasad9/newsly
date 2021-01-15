@@ -49,4 +49,38 @@ function handle_photo($attrName)
         return null;
     }
 }
+
+//TODO: send email for advertise with us
+
+//            include_once ('functions/utils.php');
+//            send_email("aliasad6521@gmail.com","test","content");
+
+function send_email($to,$subject,$message){
+    require_once('PHPMailer/PHPMailerAutoload.php');
+    require_once('/wamp64/www/newsly/env.php');
+
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;
+    $mail->isHTML();
+    $mail->Username = getenv('EMAIL');;
+    $mail->Password = getenv('EMAIL_PASSWORD');;
+    $mail->setFrom('no-reply@newsly.com','Newsly');
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+
+    $mail->AddAddress($to);
+
+    $result = $mail->Send();
+
+//    if($result == 1){
+//        echo "OK Message";//TODO: Flash message
+//    }
+//    else{
+//        echo "Sorry. Failure Message";
+//    }
+}
 ?>

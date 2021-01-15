@@ -41,6 +41,7 @@ include_once('inc/header.php');
             <?php
             include_once('functions/db_functions.php');
             include_once('config/config.php');
+
             $db_instance = new DBClass();
             $rows = $db_instance->getCategoryBasedNews($pdo, 'sports', 3);
             ?>
