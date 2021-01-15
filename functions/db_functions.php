@@ -10,7 +10,7 @@ class DBClass
                     AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
                     news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
                     news JOIN category ON news.category_id = category.id;');
-        return $stmt;
+        return $stmt->fetchAll();
     }
 
     public function searchByTag($pdo, $tag)
@@ -73,14 +73,20 @@ class DBClass
         try {
             $sql = 'INSERT INTO news(title, author_name, author_info, author_image, 
                  cover_image, image_caption, content, category_id, tags) 
-                 VALUES(:title,:author_name, :author_info, :author_image, 
-                        :cover_image, :image_caption, :content, :category_id, :tags);';
+                 VALUES(?,?, ?, ?,?, ?, ?, ?, ?);';
             $stmt = $pdo->prepare($sql);
             if ($stmt) {
-                $stmt->execute(['title' => $title, 'author_name' => $author_name, 'author_info' => $author_info,
-                    '$author_image' => $author_image, '$cover_image' => $cover_image, '$image_caption' => $image_caption,
-                    '$content' => $content, '$category_id' => $category_id, '$tags' => $tags]);
-                return true;
+                try {
+                    var_dump($stmt);
+                    $stmt->execute([$title, $author_name, $author_info,
+                        $author_image, $cover_image, $image_caption,
+                        $content, $category_id, $tags]);
+                    $stmt->closeCursor();
+                    return true;
+                } catch (Exception $exception) {
+                    echo $exception;
+                    return false;
+                }
 
             } else {
                 return false;
@@ -140,6 +146,24 @@ class DBClass
             error_log($mes);
             return false;
         }
+    }
+
+    public function getCategories($pdo)
+    {
+        $stmt = $pdo->query('SELECT * FROM category;');
+        return $stmt->fetchAll();
+    }
+
+    public function getSubCategories($pdo, $categoryId)
+    {
+        $sql = 'SELECT category.id AS category_id, category.name AS category_name, 
+                sub_category.sub_name AS sub_category_name, sub_category.id AS 
+                sub_category_id FROM category JOIN sub_category ON 
+                sub_category.category_id = category.id WHERE sub_category.category_id= :id;';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $categoryId]);
+        $categories = $stmt->fetchAll();
+        return $categories;
     }
 
 }

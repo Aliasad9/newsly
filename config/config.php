@@ -1,4 +1,5 @@
 <?php
+
 include_once ('/wamp64/www/newsly/env.php');
 $HOST = getenv('DB_HOST');
 $NAME = getenv('DB_NAME');
@@ -9,4 +10,5 @@ $dsn = 'mysql:host='.$HOST.';dbname='.$NAME;
 
 $pdo = new PDO($dsn, $USER, $PASSWORD);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
