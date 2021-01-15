@@ -68,19 +68,18 @@ class DBClass
 
     public function addNewsArticle($pdo, $title, $author_name, $author_info,
                                    $author_image, $cover_image, $image_caption,
-                                   $content, $category_id, $tags)
+                                   $content,$sub_category_id, $category_id, $tags)
     {
         try {
             $sql = 'INSERT INTO news(title, author_name, author_info, author_image, 
-                 cover_image, image_caption, content, category_id, tags) 
-                 VALUES(?,?, ?, ?,?, ?, ?, ?, ?);';
+                 cover_image, image_caption, content,sub_category_id, category_id, tags) 
+                 VALUES(?,?, ?, ?,?, ?, ?, ?, ?,?);';
             $stmt = $pdo->prepare($sql);
             if ($stmt) {
                 try {
-                    var_dump($stmt);
                     $stmt->execute([$title, $author_name, $author_info,
                         $author_image, $cover_image, $image_caption,
-                        $content, $category_id, $tags]);
+                        $content,$sub_category_id, $category_id, $tags]);
                     $stmt->closeCursor();
                     return true;
                 } catch (Exception $exception) {
