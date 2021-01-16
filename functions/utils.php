@@ -88,5 +88,10 @@ function send_email($to, $subject, $message)
 //        echo "Sorry. Failure Message";
 //    }
 }
+function logout(){
+    session_start();
+    session_destroy();
+    header("Location: ../admin/admin_login.php");
+}
 
 ?>
