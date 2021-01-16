@@ -51,22 +51,25 @@ include_once('../inc/header.php');
         <h3>Our Products</h3>
         <div class="ml-auto aboutus-container">
             <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"
-                 style="padding-bottom: 20px; margin-bottom: 2px; border-radius: 21px 21px 21px 21px;">
+                 style="padding-bottom: 20px; margin-bottom: 40px; border-radius: 21px 21px 21px 21px;">
                 <div class="my-3 py-3">
                     <h4 class="display-5">SWEN Magazine by Newsly</h4>
                     <p class="lead">Let the news shine in.</p>
                 </div>
                 <div class="bg-light box-shadow mx-auto aboutus-swen"
-                     style="width: 80%; height: 300px; border-radius: 21px 21px 21px 21px; margin-bottom: 20px;"></div>
+                     style="width: 80%; height: 300px; border-radius: 21px 21px 21px 21px; margin-bottom: 20px;">
+
+                </div>
             </div>
             <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"
-                 style="padding-bottom: 20px; margin-bottom: 2px; border-radius: 21px 21px 21px 21px;">
+                 style="padding-bottom: 20px; margin-bottom: 20px; border-radius: 21px 21px 21px 21px;">
                 <div class="my-3 py-3">
                     <h4 class="display-5">SWEN Wheels by Newsly</h4>
                     <p class="lead">Ramp up the wheels</p>
                 </div>
                 <div class="bg-light box-shadow mx-auto aboutus-wheels"
-                     style="width: 80%; height: 300px; border-radius: 21px 21px 21px 21px; margin-bottom: 20px;"></div>
+                     style="width: 80%; height: 300px; border-radius: 21px 21px 21px 21px; margin-bottom: 20px;">
+                </div>
             </div>
         </div>
     </div>
