@@ -14,7 +14,8 @@ include_once('../inc/header.php');
 
             <!-- TODO: Dynamically add background image -->
             <?php
-            include_once('../inc/featured_card.html')
+            $title = "Politics";
+            include_once('../inc/featured_card.php')
             ?>
 
             <!-- Best Articles used as Latest-->

@@ -13,7 +13,8 @@ include_once('../inc/header.php');
         <main class="container">
             <!-- TODO: Dynamically add background image -->
             <?php
-            include_once('../inc/featured_card.html')
+            $title="Fashion";
+            include_once('../inc/featured_card.php')
             ?>
 
             <div class="row mb-2">

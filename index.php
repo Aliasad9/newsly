@@ -9,7 +9,7 @@ include_once('inc/header.php');
 <body>
 <div class="container">
     <?php
-    include_once('./inc/navbar.html')
+    include_once('./inc/navbar.html');
     ?>
 
     <main class="container">
@@ -41,6 +41,7 @@ include_once('inc/header.php');
             <?php
             include_once('functions/db_functions.php');
             include_once('config/config.php');
+
             $db_instance = new DBClass();
             $rows = $db_instance->getCategoryBasedNews($pdo, 'sports', 3);
             ?>
@@ -63,17 +64,9 @@ include_once('inc/header.php');
                             </div>
                             <p class="card-text">
                                 <?php
-                                $count = 0;
-                                foreach (json_decode($row->content, true)['data'] as $text) { //foreach element in $arr
-                                    if ($count == 0) {
-                                        if (isset($text['text'])) {
-                                            echo "<p>" . $text['text'] . '</p>';
-                                            $count += 1;
-                                        }
-                                    } else {
-                                        break;
-                                    }
-                                }
+
+                                $htmlContent =json_decode($row->content, true)['data'];
+                                echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500);
                                 ?>
                             </p>
                         </div>
