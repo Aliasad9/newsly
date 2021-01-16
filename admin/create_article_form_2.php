@@ -1,12 +1,49 @@
 <?php
 
-include_once ('../functions/utils.php');
+include_once('../functions/utils.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if file was uploaded without errors
 
 
-    $cover_image = handle_photo("photo");
-    $author_image = handle_photo("author-image");
+    function getEmptyFields()
+    {
+        $fieldsList = [];
+        if (!isset($_POST['author-name']) || ($_POST['author-name'] == '')) {
+            array_push($fieldsList, "author-name=0");
+        }
+        if (!isset($_POST['author-info']) || ($_POST['author-info'] == '')) {
+            array_push($fieldsList, "author-info=0");
+        }
+        if (!isset($_FILES['author-image']) && $_FILES['author-image']["error"] == 0) {
+            array_push($fieldsList, "author-image=0");
+        }
+        if (!isset($_POST['title']) || ($_POST['title'] == '')) {
+            array_push($fieldsList, "title=0");
+        }
+        if (!isset($_POST['cover-image-caption']) || ($_POST['cover-image-caption'] == '')) {
+            array_push($fieldsList, "cover-image-caption=0");
+        }
+        if (!isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+            array_push($fieldsList, "photo=0");
+        }
+        if (!isset($_POST['category']) || ($_POST['category'] == '')) {
+            array_push($fieldsList, "category=0");
+        }
+        return $fieldsList;
+
+    }
+
+    $fields = getEmptyFields();
+    if (count($fields) > 0) {
+        header('Location: ./create_article_form_1.php?' . join('&', $fields));
+
+    } else {
+
+        $cover_image = handle_photo("photo");
+        $author_image = handle_photo("author-image");
+    }
+
+
 }
 
 
@@ -106,11 +143,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input hidden type="text" class="form-control" name="cover-image" id="cover-image"
                value="<?php echo $cover_image; ?>"/>
         <input hidden type="text" class="form-control" name="image-caption" id="image-caption"
-               value="<?php echo htmlspecialchars($_POST['cover-image-caption']) ;?>"/>
+               value="<?php echo htmlspecialchars($_POST['cover-image-caption']); ?>"/>
         <input hidden type="text" class="form-control" name="category" id="category"
                value="<?php echo htmlspecialchars($_POST['category']); ?>"/>
 
-        <!--            TODO: get previous form data and pass forward-->
         <button type="submit" class="btn btn-primary">
             Create Article
         </button>
@@ -144,5 +180,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     console.log(
         ClassicEditor.builtinPlugins.map(plugin => plugin.pluginName)
     );
+</script>
+<script>
+
+    window.localStorage.removeItem('author-name');
+    window.localStorage.removeItem('author-info');
+    window.localStorage.removeItem('title');
+    window.localStorage.removeItem('cover-image-caption');
 </script>
 </body>

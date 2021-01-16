@@ -1,15 +1,19 @@
 <?php
 
-function getFormattedDateTime($strDatetime){
+function getFormattedDateTime($strDatetime)
+{
 
     $date = new DateTime($strDatetime);
     return date_format($date, "M j, Y");
 }
-function getUnformattedTextFromHtml($htmlString){
-    $start =  strrpos($htmlString, '<p>');
+
+function getUnformattedTextFromHtml($htmlString)
+{
+    $start = strrpos($htmlString, '<p>');
     $end = strrpos($htmlString, '</p>');
-    return substr($htmlString,$start,$end-$start);
+    return substr($htmlString, $start, $end - $start);
 }
+
 function handle_photo($attrName)
 {
     if (isset($_FILES[$attrName]) && $_FILES[$attrName]["error"] == 0) {
@@ -32,11 +36,11 @@ function handle_photo($attrName)
 
         if (in_array($filetype, $allowed)) {
             $new_filename = (explode(".", $filename))[0] . uniqid('_') . time() . '.' . $ext;
-            try{
+            try {
                 move_uploaded_file($_FILES[$attrName]["tmp_name"], "../assets/" . $new_filename);
                 echo "Your file was uploaded successfully.";//TODO: Flash message
                 return $new_filename;
-            }catch (Exception $e){
+            } catch (Exception $e) {
                 echo $e;
                 return null;
             }
@@ -55,7 +59,8 @@ function handle_photo($attrName)
 //            include_once ('functions/utils.php');
 //            send_email("aliasad6521@gmail.com","test","content");
 
-function send_email($to,$subject,$message){
+function send_email($to, $subject, $message)
+{
     require_once('PHPMailer/PHPMailerAutoload.php');
     require_once('/wamp64/www/newsly/env.php');
 
@@ -68,7 +73,7 @@ function send_email($to,$subject,$message){
     $mail->isHTML();
     $mail->Username = getenv('EMAIL');;
     $mail->Password = getenv('EMAIL_PASSWORD');;
-    $mail->setFrom('no-reply@newsly.com','Newsly');
+    $mail->setFrom('no-reply@newsly.com', 'Newsly');
     $mail->Subject = $subject;
     $mail->Body = $message;
 
@@ -83,4 +88,5 @@ function send_email($to,$subject,$message){
 //        echo "Sorry. Failure Message";
 //    }
 }
+
 ?>
