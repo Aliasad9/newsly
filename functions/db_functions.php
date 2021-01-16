@@ -27,6 +27,39 @@ class DBClass
         return $news;
     }
 
+    public function getSubCategoryBasedNews($pdo, $subCategory, $limit = 0)
+    {
+        if ($limit == 0) {
+            $sql = 'SELECT news.id AS n_id, news.title AS title, news.content AS content, 
+                    news.created_at AS created_at, news.author_name AS author_name, news.author_image 
+                    AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
+                    news.image_caption AS image_caption, news.tags AS tags, category.name AS name, 
+                    sub_category.sub_name AS sub_name FROM news JOIN category ON news.category_id = category.id 
+                    JOIN sub_category ON news.sub_category_id = sub_category.id
+                    WHERE sub_category.sub_name = :subCategoryName
+                    ORDER BY created_at DESC; ';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['subCategoryName' => $subCategory]);
+            $news = $stmt->fetchAll();
+            return $news;
+        } else {
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $sql = 'SELECT news.id AS n_id, news.title AS title, news.content AS content, 
+                    news.created_at AS created_at, news.author_name AS author_name, news.author_image 
+                    AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
+                    news.image_caption AS image_caption, news.tags AS tags, category.name AS name, 
+                    sub_category.sub_name AS sub_name FROM news JOIN category ON news.category_id = category.id 
+                    JOIN sub_category ON news.sub_category_id = sub_category.id
+                    WHERE sub_category.sub_name = ? 
+                    ORDER BY news.created_at DESC LIMIT ?; ';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$subCategory, $limit]);
+            $news = $stmt->fetchAll();
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+            return $news;
+        }
+    }
+
     public function getCategoryBasedNews($pdo, $categoryName, $limit = 0)
     {
         if ($limit == 0) {

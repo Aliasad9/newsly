@@ -12,7 +12,7 @@ include_once('../inc/header.php');
     ?>
     <main class="container">
         <?php
-        $title = "Sports";
+
         include_once('../inc/featured_card.php')
         ?>
 

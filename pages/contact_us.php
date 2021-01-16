@@ -13,7 +13,7 @@ include_once('../inc/header.php');
 
         <!-- TODO: Dynamically add background image -->
         <?php
-        include_once('../inc/featured_card.html')
+        include_once('../inc/featured_card.php')
         ?>
 
         <!-- Our Partners -->
