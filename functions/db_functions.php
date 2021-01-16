@@ -60,6 +60,7 @@ class DBClass
         }
     }
 
+
     public function getCategoryBasedNews($pdo, $categoryName, $limit = 0)
     {
         if ($limit == 0) {
@@ -224,7 +225,11 @@ class DBClass
             return false;
         }
     }
+    public function getContactUs($pdo){
+        $stmt = $pdo->query('SELECT * FROM contact_us ORDER BY created_at DESC;');
+        return $stmt->fetchAll();
 
+    }
     public function getUser($pdo, $email, $password)
     {
         $sql = 'SELECT * FROM admin WHERE email=?';
