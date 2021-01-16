@@ -168,6 +168,18 @@ h6 {
 }
 
 
+.advertise-background{
+    background-image: url("../assets/advertise-image-1.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.advertise-wrapper {
+    background-color: rgba(0, 0, 0, 0.267);
+    height: 100%;
+}
+
+
 @media (min-width: 768px) {
     .display-4 {
         font-size: 3rem;
