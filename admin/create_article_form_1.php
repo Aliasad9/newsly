@@ -150,7 +150,6 @@ var_dump($_SESSION);
     function saveForm() {
         window.localStorage.setItem('author-name', document.getElementById('author-name').value);
         window.localStorage.setItem('category', document.getElementById('category').value);
-
         window.localStorage.setItem('author-info', document.getElementById('author-info').value);
         window.localStorage.setItem('title', document.getElementById('title').value);
         window.localStorage.setItem('cover-image-caption', document.getElementById('cover-image-caption').value);

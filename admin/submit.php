@@ -1,3 +1,21 @@
+<script>
+    function clearMemory() {
+        window.localStorage.removeItem('author-name');
+        window.localStorage.removeItem('author-info');
+        window.localStorage.removeItem('title');
+        window.localStorage.removeItem('cover-image-caption');
+
+        window.localStorage.removeItem('cover-image');
+        window.localStorage.removeItem('author-image');
+        window.localStorage.removeItem('tag-list');
+        window.localStorage.removeItem('content');
+        window.localStorage.removeItem('sub-category');
+        window.localStorage.removeItem('category');
+
+
+    }
+
+</script>
 <?php
 
 include_once('../functions/utils.php');
@@ -28,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: ./create_article_form_2.php?' . join('&', $fields) . "&category=" . $_POST['category']);
 
     } else {
-
+        echo "<script>clearMemory();</script>";
         submitData();
     }
 
@@ -67,18 +85,4 @@ function submitData()
 }
 
 ?>
-<script>
-    function clearMemory() {
-        window.localStorage.removeItem('author-name');
-        window.localStorage.removeItem('author-info');
-        window.localStorage.removeItem('title');
-        window.localStorage.removeItem('cover-image-caption');
 
-        window.localStorage.removeItem('cover-image');
-        window.localStorage.removeItem('author-image');
-        window.localStorage.removeItem('tag-list');
-        window.localStorage.removeItem('content');
-        window.localStorage.removeItem('sub-category');
-    }
-
-</script>

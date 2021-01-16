@@ -40,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $cover_image = handle_photo("photo");
         $author_image = handle_photo("author-image");
-        echo "<script>"."window.localStorage.setItem('cover-image', ".$cover_image.");</script>";
-        echo "<script>"."window.localStorage.setItem('cover-image', ".$author_image.");</script>";
+        echo "<script>" . "window.localStorage.setItem('cover-image', " . "'" . $cover_image . "'" . ");</script>";
+        echo "<script>" . "window.localStorage.setItem('author-image', " . "'" . $author_image . "'" . ");</script>";
 
     }
 
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if (isset($_POST['category'])) {
                     $rows = $db_instance->getSubCategories($pdo, $_POST['category']);
-                        echo "post";
+                    echo "post";
                 } else {
                     $rows = $db_instance->getSubCategories($pdo, $_GET['category']);
                     echo "get";
@@ -149,22 +149,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </div>
         <input hidden type="text" class="form-control" name="title" id="title"/>
-        <input hidden type="text" class="form-control" name="author-image" id="author-image"
-               value="<?php
+        <input hidden type="text" class="form-control" name="author-image" id="author-image"/>
+        <?php
 
-                   echo "<script>window.localStorage.getItem('author-image');</script>";
+        echo "<script>document.getElementById('author-image').value = window.localStorage.getItem('author-image');</script>";
 
-               ?>"/>
+        ?>
         <input hidden type="text" class="form-control" name="author-name" id="author-name"
         />
         <input hidden type="text" class="form-control" name="author-info" id="author-info"
         />
-        <input hidden type="text" class="form-control" name="cover-image" id="cover-image"
-               value="<?php
+        <input hidden type="text" class="form-control" name="cover-image" id="cover-image"/>
+        <?php
 
-                   echo "<script>window.localStorage.getItem('cover-image');</script>";
+        echo "<script>document.getElementById('cover-image').value = window.localStorage.getItem('cover-image');</script>";
 
-               ?>"/>
+        ?>
         <input hidden type="text" class="form-control" name="image-caption" id="image-caption"
         />
         <input hidden type="text" class="form-control" name="category" id="category"

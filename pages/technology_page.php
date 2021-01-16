@@ -13,7 +13,7 @@ include_once('../inc/header.php');
         <main class="container">
             <!-- TODO: Dynamically add background image -->
             <?php
-            include_once('../inc/featured_card.html')
+            include_once('../inc/featured_card.php')
             ?>
 
             <!-- 4 Column Grid -->
