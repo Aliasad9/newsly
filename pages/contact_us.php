@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+if (isset($_POST["submit"])) {
+    if (empty($_POST["email"])) {
+        $eMessage = '<label>Email field cannot be empty</label>';
+    } else if (empty($_POST["content"])) {
+        $cMessage = '<label>Content field cannot be empty</label>';
+    } else if (empty($_POST["subject"])) {
+        $sMessage = '<label>Subject field cannot be empty</label>';
+    } else {
+        $email = htmlspecialchars($_POST['email']);
+        $subject = htmlspecialchars($_POST['subject']);
+        $content = htmlspecialchars($_POST['content']);
+
+        include_once('../functions/db_functions.php');
+        include_once('../config/config.php');
+
+        $db_instance = new DBClass();
+        $is_inserted = $db_instance->addContactUs($pdo, $subject, $email, $content);
+
+        if ($is_inserted) {
+            header("location: ./contact_us.php");
+        } else {
+            $pMessage = "DB not working";
+        }
+    }
+}
+
 $title = "Contact Us";
 include_once('../inc/header.php');
 ?>
 
 <body>
-
 
     <!-- Header -->
     <header class="news-header py-4">
@@ -49,29 +74,47 @@ include_once('../inc/header.php');
                         <p class="card-title display-6 pt-3">
                             <i class="far fa-envelope-open"></i><span class="px-3">Contact</span>
                         </p>
-                        <form method="POST" class="py-3">
+                        <form method="POST" class="py-3" action="./contact_us.php">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="subject" placeholder="subject" />
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="subject" />
                                 <label for="subject" class="form-label">Subject</label>
-                                <div class="form-text">
-                                    Enter the subject.
-                                </div>
+
+                                <?php
+                                if (isset($sMessage)) {
+                                    echo '<label class="text-danger">' . $sMessage . '</label>';
+                                } else {
+                                    echo '<div class="form-text">Enter the subject</div>';
+                                }
+                                ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="email" />
+                                <input type="email" class="form-control" id="email" name="email" placeholder="email" />
                                 <label for="email" class="form-label">Email</label>
-                                <div class="form-text">
-                                    Enter your email address.
-                                </div>
+                                <?php
+                                if (isset($eMessage)) {
+                                    echo '<label class="text-danger">' . $eMessage . '</label>';
+                                } else {
+                                    echo '<div class="form-text">Enter your email address</div>';
+                                }
+                                ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" placeholder="Leave your message here" id="message" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Leave your message here" name="content" id="message" style="height: 100px"></textarea>
                                 <label for="message">Message</label>
-                                <div class="form-text">
-                                    Enter your message here.
-                                </div>
+                                <?php
+                                if (isset($cMessage)) {
+                                    echo '<label class="text-danger">' . $cMessage . '</label>';
+                                } else {
+                                    echo '<div class="form-text">Enter the message</div>';
+                                }
+                                ?>
                             </div>
-                            <button type="submit" class="btn btn-primary">
+                            <?php
+                            if (isset($pMessage)) {
+                                echo '<label class="text-danger">' . $pMessage . '</label>';
+                            }
+                            ?>
+                            <button type="submit" name="submit" class="btn btn-primary">
                                 Send
                             </button>
                         </form>
@@ -82,10 +125,7 @@ include_once('../inc/header.php');
 
         </div>
 
-
-    </div>
-
-    <?php include_once('../inc/footer.html') ?>
+        <?php include_once('../inc/footer.html') ?>
 </body>
 
 </html>
