@@ -186,3 +186,32 @@ h6 {
         align-items: center;
     }
 }
+
+/*About US Page*/
+
+.main-about-card {
+    background-image: url("../assets/about-image-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.aboutus-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.aboutus-swen{
+    background-image: url("../assets/product-image-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.aboutus-wheels{
+    background-image: url("../assets/wheels-image-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

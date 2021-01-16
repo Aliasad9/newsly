@@ -34,6 +34,7 @@ include_once('../inc/header.php');
 ?>
 
 <body>
+
 <div class="container">
     <?php
     include_once('../inc/navbar.html')
@@ -49,6 +50,7 @@ include_once('../inc/header.php');
         <div class="section-heading d-flex justify-content-between align-items-center py-4">
             <h3 class="font-italic">Our Advertising Partners</h3>
         </div>
+
 
         <div class="col-md-6">
             <div class="card mb-4">
