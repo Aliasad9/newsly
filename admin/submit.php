@@ -1,6 +1,42 @@
 <?php
 
-if (isset($_POST['content'])) {
+include_once('../functions/utils.php');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if file was uploaded without errors
+
+
+    function getEmptyFields()
+    {
+        $fieldsList = [];
+        if (!isset($_POST['content']) || ($_POST['content'] == '')) {
+            array_push($fieldsList, "content=0");
+        }
+        if (!isset($_POST['sub-category']) || ($_POST['sub-category'] == '')) {
+            array_push($fieldsList, "sub-category=0");
+        }
+
+        if (!isset($_POST['tag-list']) || ($_POST['tag-list'] == '')) {
+            array_push($fieldsList, "tag-list=0");
+        }
+
+        return $fieldsList;
+
+    }
+
+    $fields = getEmptyFields();
+    if (count($fields) > 0) {
+        header('Location: ./create_article_form_2.php?' . join('&', $fields) . "&category=" . $_POST['category']);
+
+    } else {
+
+        submitData();
+    }
+
+
+}
+
+function submitData()
+{
     include_once('../functions/db_functions.php');
     include_once('../config/config.php');
     $db_instance = new DBClass();
@@ -24,8 +60,25 @@ if (isset($_POST['content'])) {
         $coverImage, $imageCaption, $contentJson, $subCategory, $category, "{\"tags\": $tagsJson}");
     if ($status) {
         echo "Success";
+        echo '<script type="text/javascript">', 'clearMemory();', '</script>';
     } else {
         echo "LPC";
     }
 }
+
 ?>
+<script>
+    function clearMemory() {
+        window.localStorage.removeItem('author-name');
+        window.localStorage.removeItem('author-info');
+        window.localStorage.removeItem('title');
+        window.localStorage.removeItem('cover-image-caption');
+
+        window.localStorage.removeItem('cover-image');
+        window.localStorage.removeItem('author-image');
+        window.localStorage.removeItem('tag-list');
+        window.localStorage.removeItem('content');
+        window.localStorage.removeItem('sub-category');
+    }
+
+</script>

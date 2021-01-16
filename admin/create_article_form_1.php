@@ -123,7 +123,7 @@ var_dump($_SESSION);
         </div>
         <div class="mb-3">
             <label class="form-label"> Category</label>
-            <select class="form-select" aria-label="category" name="category">
+            <select class="form-select" aria-label="category" name="category" id="category">
                 <?php
 
                 include_once('../functions/db_functions.php');
@@ -149,6 +149,8 @@ var_dump($_SESSION);
 <script>
     function saveForm() {
         window.localStorage.setItem('author-name', document.getElementById('author-name').value);
+        window.localStorage.setItem('category', document.getElementById('category').value);
+
         window.localStorage.setItem('author-info', document.getElementById('author-info').value);
         window.localStorage.setItem('title', document.getElementById('title').value);
         window.localStorage.setItem('cover-image-caption', document.getElementById('cover-image-caption').value);

@@ -38,9 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: ./create_article_form_1.php?' . join('&', $fields));
 
     } else {
-
         $cover_image = handle_photo("photo");
         $author_image = handle_photo("author-image");
+        echo "<script>"."window.localStorage.setItem('cover-image', ".$cover_image.");</script>";
+        echo "<script>"."window.localStorage.setItem('cover-image', ".$author_image.");</script>";
+
     }
 
 
@@ -93,26 +95,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="header mb-4">
         <p class="display-6">Write a New Article (2/2)</p>
     </div>
-    <form method="POST" action="submit.php">
+    <form method="POST" action="submit.php" onsubmit="return saveForm()">
         <div class="mb-3">
             <label for="editor" class="form-label"
             >Write your Content</label
             >
 
             <textarea name="content" id="editor"> </textarea>
+            <?php if (isset($_GET['content'])): ?>
+                <div class="text-danger">
+                    Field cannot be empty
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Sub-Category</label>
-            <select class="form-select" aria-label="sub-category" name="sub-category">
+            <select class="form-select" aria-label="sub-category" name="sub-category" id="sub-category">
                 <?php
+                include_once('../functions/db_functions.php');
+                include_once('../config/config.php');
+                $db_instance = new DBClass();
+
                 if (isset($_POST['category'])) {
-                    include_once('../functions/db_functions.php');
-                    include_once('../config/config.php');
-                    $db_instance = new DBClass();
                     $rows = $db_instance->getSubCategories($pdo, $_POST['category']);
+                        echo "post";
                 } else {
-                    //TODO: revert back to previous form
+                    $rows = $db_instance->getSubCategories($pdo, $_GET['category']);
+                    echo "get";
                 }
                 ?>
                 <?php foreach ($rows as $row): ?>
@@ -131,21 +141,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-text">
                 Write upto 4 comma-separated tags.
             </div>
+            <?php if (isset($_GET['tag-list'])): ?>
+                <div class="text-danger">
+                    Field cannot be empty
+                </div>
+            <?php endif; ?>
 
         </div>
-        <input hidden type="text" class="form-control" name="title" id="title" value="<?php echo $_POST['title']; ?>"/>
+        <input hidden type="text" class="form-control" name="title" id="title"/>
         <input hidden type="text" class="form-control" name="author-image" id="author-image"
-               value="<?php echo $author_image; ?>"/>
+               value="<?php
+
+                   echo "<script>window.localStorage.getItem('author-image');</script>";
+
+               ?>"/>
         <input hidden type="text" class="form-control" name="author-name" id="author-name"
-               value="<?php echo htmlspecialchars($_POST['author-name']); ?>"/>
+        />
         <input hidden type="text" class="form-control" name="author-info" id="author-info"
-               value="<?php echo htmlspecialchars($_POST['author-info']); ?>"/>
+        />
         <input hidden type="text" class="form-control" name="cover-image" id="cover-image"
-               value="<?php echo $cover_image; ?>"/>
+               value="<?php
+
+                   echo "<script>window.localStorage.getItem('cover-image');</script>";
+
+               ?>"/>
         <input hidden type="text" class="form-control" name="image-caption" id="image-caption"
-               value="<?php echo htmlspecialchars($_POST['cover-image-caption']); ?>"/>
+        />
         <input hidden type="text" class="form-control" name="category" id="category"
-               value="<?php echo htmlspecialchars($_POST['category']); ?>"/>
+        />
 
         <button type="submit" class="btn btn-primary">
             Create Article
@@ -155,6 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- Create CKEditor in textarea -->
 <script>
+    let editor;
     ClassicEditor.create(document.querySelector("#editor"), {
 
         removePlugins: [
@@ -173,6 +197,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "Indent",
             "blockQuote"
         ]
+    }).then(newEditor => {
+        editor = newEditor;
+        editor.data.set(window.localStorage.getItem('content'));
     }).catch(error => {
         console.error(error);
     });
@@ -180,12 +207,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     console.log(
         ClassicEditor.builtinPlugins.map(plugin => plugin.pluginName)
     );
-</script>
-<script>
+    document.getElementById("author-name").value = window.localStorage.getItem('author-name');
+    document.getElementById("author-info").value = window.localStorage.getItem('author-info');
+    document.getElementById("title").value = window.localStorage.getItem('title');
+    document.getElementById("image-caption").value = window.localStorage.getItem('cover-image-caption');
+    document.getElementById("tag-list").value = window.localStorage.getItem('tag-list');
+    document.getElementById("sub-category").value = window.localStorage.getItem('sub-category');
+    document.getElementById("category").value = window.localStorage.getItem('category');
 
-    window.localStorage.removeItem('author-name');
-    window.localStorage.removeItem('author-info');
-    window.localStorage.removeItem('title');
-    window.localStorage.removeItem('cover-image-caption');
+
+    function saveForm() {
+        window.localStorage.setItem('cover-image', document.getElementById('cover-image').value);
+        window.localStorage.setItem('author-image', document.getElementById('author-image').value);
+        window.localStorage.setItem('tag-list', document.getElementById('tag-list').value);
+        window.localStorage.setItem('content', editor.getData());
+        window.localStorage.setItem('sub-category', document.getElementById('sub-category').value);
+        return true;
+    }
 </script>
+
 </body>
