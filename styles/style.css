@@ -144,6 +144,8 @@ h6 {
     line-height: 2.3rem;
 }
 
+
+
 /* Politics Page */
 .main-politics-card {
   background-image: url("../assets/politics-image-1.jpg");
@@ -152,6 +154,19 @@ h6 {
   background-repeat: no-repeat;
   height: 500px;
 }
+
+.form-background{
+    background-image: url("../assets/contact-image-3.jpg");
+    background-position: center;
+    background-size: cover;
+
+}
+
+.form-wrapper {
+    background-color: rgba(206, 12, 12, 0.452);
+    height: 100%;
+}
+
 
 @media (min-width: 768px) {
     .display-4 {
