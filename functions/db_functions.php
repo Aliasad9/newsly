@@ -224,6 +224,21 @@ class DBClass
             return false;
         }
     }
+
+    public function getUser($pdo, $email, $password)
+    {
+        $sql = 'SELECT * FROM admin WHERE email=?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email]);
+        $result = $stmt->fetch();
+        if ($result) {
+            return password_verify($password, $result->password);
+        } else {
+            return false;
+        }
+
+
+    }
 }
 
 ?>
