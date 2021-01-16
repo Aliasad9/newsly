@@ -6,15 +6,35 @@ include_once('../inc/header.php');
 ?>
 
 <body>
+
+
+    <!-- Header -->
+    <header class="news-header py-4">
+        <div class="row flex-nowrap justify-content-center align-items-center">
+            <div class="col-4 text-center">
+                <a class="news-header-logo text-dark" href="/newsly/index.php">Newsly</a>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <?php
-        include_once('../inc/navbar.html')
-        ?>
+
+        <!-- Contact Us -->
+        <div class="section-heading d-flex justify-content-between align-items-center py-4">
+            <h3 class="font-italic">Let's Work Together!</h3>
+        </div>
+
+        <div class="mb-4">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum alias ducimus laboriosam ullam asperiores nobis optio enim nihil porro tempore, dicta ipsam provident exercitationem veniam nemo eaque repellendus excepturi cum eveniet animi quod quaerat iste. Numquam eum modi deserunt rem.
+            </p>
+        </div>
 
         <!-- Contact Form -->
         <div class="section-heading d-flex justify-content-between align-items-center py-4">
-            <h3 class="font-italic">Reach Out to Us!</h3>
+            <h3 class="font-italic">How To Contact?</h3>
         </div>
+
 
         <div class="mb-4">
             <p>
@@ -62,78 +82,6 @@ include_once('../inc/header.php');
 
         </div>
 
-        <!-- Our Partners -->
-        <div class="row mb-2">
-            <div class="section-heading d-flex justify-content-between align-items-center py-4">
-                <h3 class="font-italic">Our Clients</h3>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <img src="../assets/contact-image-4.jpg" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h5 class="card-title">Card title</h5>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="card-text">
-                            Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Nostrum laboriosam
-                            consectetur distinctio qui nulla sint iure
-                            corrupti. Libero, architecto eveniet.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <img src="../assets/contact-image-8.jpg" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <strong class="d-inline-block mb-2 text-warning">Design</strong>
-                        <h5 class="card-title">Card title</h5>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="card-text">
-                            Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Nostrum laboriosam
-                            consectetur distinctio qui nulla sint iure
-                            corrupti. Libero, architecto eveniet.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <img src="../assets/contact-image-6.jpg" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <strong class="d-inline-block mb-2 text-primary">Design</strong>
-                        <h5 class="card-title">Card title</h5>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="card-text">
-                            Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Nostrum laboriosam
-                            consectetur distinctio qui nulla sint iure
-                            corrupti. Libero, architecto eveniet.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <img src="../assets/contact-image-7.jpg" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <strong class="d-inline-block mb-2 text-primary">Design</strong>
-                        <h5 class="card-title">Card title</h5>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="card-text">
-                            Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Nostrum laboriosam
-                            consectetur distinctio qui nulla sint iure
-                            corrupti. Libero, architecto eveniet.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 
