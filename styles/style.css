@@ -168,6 +168,18 @@ h6 {
 }
 
 
+.advertise-background{
+    background-image: url("../assets/advertise-image-1.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.advertise-wrapper {
+    background-color: rgba(0, 0, 0, 0.267);
+    height: 100%;
+}
+
+
 @media (min-width: 768px) {
     .display-4 {
         font-size: 3rem;
@@ -185,4 +197,33 @@ h6 {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/*About US Page*/
+
+.main-about-card {
+    background-image: url("../assets/about-image-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.aboutus-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.aboutus-swen{
+    background-image: url("../assets/product-image-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.aboutus-wheels{
+    background-image: url("../assets/wheels-image-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
