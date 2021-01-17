@@ -61,7 +61,7 @@ function handle_photo($attrName)
 
 function send_email($to, $subject, $message)
 {
-    require_once('PHPMailer/PHPMailerAutoload.php');
+    require_once('../PHPMailer/PHPMailerAutoload.php');
     require_once('/wamp64/www/newsly/env.php');
 
     $mail = new PHPMailer();
@@ -80,13 +80,8 @@ function send_email($to, $subject, $message)
     $mail->AddAddress($to);
 
     $result = $mail->Send();
+    return $result==1;
 
-//    if($result == 1){
-//        echo "OK Message";//TODO: Flash message
-//    }
-//    else{
-//        echo "Sorry. Failure Message";
-//    }
 }
 function logout(){
     session_start();
