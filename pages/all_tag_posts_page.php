@@ -13,7 +13,7 @@ include_once('../inc/header.php');
     include_once('../functions/db_functions.php');
     include_once('../config/config.php');
     $db_class = new DBClass();
-    $tag = "%" . $_GET['tag'] . "%";
+    $tag = "%" . htmlspecialchars($_GET['tag']) . "%";
 
 
     $result = $db_class->searchByTag($pdo, $tag);
@@ -27,6 +27,9 @@ include_once('../inc/header.php');
         </div>
 
         <!-- All Stories Section -->
+        <?php if (count($result)==0):?>
+        <div class="mb-1 text-muted">Could not find news with this tag :(</div>
+        <?php endif;?>
 
         <div class="row mb-2">
             <?php foreach ($result as $row): ?>
