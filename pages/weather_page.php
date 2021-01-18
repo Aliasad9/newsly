@@ -12,18 +12,14 @@ include_once('../inc/header.php');
     ?>
     <main class="container">
         <?php
-
-
         include_once('../functions/db_functions.php');
         include_once('../config/config.php');
-
         $db_instance = new DBClass();
         $news_article = $db_instance->getCategorySubCategory($pdo, 'weather', 'featured', 1);
         include_once('../inc/featured_card.php');
         $latest_news = $db_instance->getCategorySubCategory($pdo, 'weather', 'latest', 3);
         $asia_news = $db_instance->getCategorySubCategory($pdo, 'weather', 'asia', 3);
-        $all_news = $db_instance->getCategoryBasedNews($pdo, 'sports');
-
+        $all_news = $db_instance->getCategoryBasedNews($pdo, 'weather');
         ?>
 
         <!-- Latest Forecast -->
