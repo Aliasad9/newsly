@@ -19,10 +19,11 @@ class DBClass
                     news.created_at AS created_at, news.author_name AS author_name, news.author_image 
                     AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
                     news.image_caption AS image_caption, news.tags AS tags, category.name AS name
-                    FROM news JOIN category ON news.category_id = category.id WHERE news.tags LIKE %:tag% 
+                    FROM news JOIN category ON news.category_id = category.id 
+                    WHERE JSON_EXTRACT(news.tags, \'$.tags\') LIKE ? 
                     ORDER BY news.created_at DESC;';
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['tag' => $tag]);
+        $stmt->execute([$tag]);
         $news = $stmt->fetchAll();
         return $news;
     }
