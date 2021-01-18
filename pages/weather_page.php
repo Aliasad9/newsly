@@ -6,320 +6,171 @@ include_once('../inc/header.php');
 ?>
 
 <body>
-    <div class="container">
+<div class="container">
+    <?php
+    include_once('../inc/navbar.html')
+    ?>
+    <main class="container">
         <?php
-        include_once('../inc/navbar.html')
+
+
+        include_once('../functions/db_functions.php');
+        include_once('../config/config.php');
+
+        $db_instance = new DBClass();
+        $news_article = $db_instance->getCategorySubCategory($pdo, 'weather', 'featured', 1);
+        include_once('../inc/featured_card.php');
+        $latest_news = $db_instance->getCategorySubCategory($pdo, 'weather', 'latest', 3);
+        $asia_news = $db_instance->getCategorySubCategory($pdo, 'weather', 'asia', 3);
+        $all_news = $db_instance->getCategoryBasedNews($pdo, 'sports');
+
         ?>
-        <main class="container">
-            <?php
 
-            include_once('../inc/featured_card.php')
-            ?>
-
-            <!-- Latest Forecast -->
-            <div class="row mt-4">
-                <div class="section-heading d-flex justify-content-between align-items-center py-4">
-                    <h3 class="font-italic">Latest Forecast</h3>
-                </div>
-                <div class="big-card col-lg-8 col-md-12">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-3.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-success">Design</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                Consequuntur totam fuga, obcaecati provident nam eligendi
-                                corrupti laboriosam doloremque eum recusandae voluptatem unde
-                                magni voluptate iusto beatae adipisci reiciendis neque fugiat
-                                consectetur. Assumenda, temporibus. Eius, dignissimos. Officia
-                                fugit ducimus repudiandae? Sapiente, esse quaerat. Labore,
-                                perferendis iste explicabo laboriosam unde excepturi cum?
-                            </p>
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                        <div class="card-body"></div>
+        <!-- Latest Forecast -->
+        <div class="row mt-4">
+            <div class="section-heading d-flex justify-content-between align-items-center py-4">
+                <h3 class="font-italic">Latest Forecast</h3>
+            </div>
+            <div class="big-card col-lg-8 col-md-12">
+                <div class="card mb-4">
+                    <img src="../assets/<?php echo $latest_news[0]->cover_image ?>" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <strong class="d-inline-block mb-2 text-success"><?php echo $latest_news[0]->name ?></strong>
+                        <h5 class="card-title"><?php echo $latest_news[0]->title ?></h5>
+                        <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                            echo getFormattedDateTime($latest_news[0]->created_at); ?></div>
+                        <p class="card-text">
+                            <?php $htmlContent = json_decode($latest_news[0]->content, true)['data'];
+                            echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500) . "..."; ?>
+                        </p>
+                        <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $latest_news[0]->n_id; ?>"
+                           class="card-link">Read More</a>
                     </div>
+                    <div class="card-body"></div>
                 </div>
-                <div class="row col-lg-4 col-md-12 px-0 mx-0">
+            </div>
+            <div class="row col-lg-4 col-md-12 px-0 mx-0">
+                <?php for ($x = 1; $x <= count($latest_news) - 1; $x++): ?>
+
                     <div class="col-lg-12 col-md-6 mb-3">
                         <div class="card mb-4">
-                            <img src="../assets/weather-image-1.jpg" class="card-img-top" alt="..." />
+                            <img src="../assets/<?php echo $latest_news[$x]->cover_image ?>" class="card-img-top"
+                                 alt="..."/>
                             <div class="card-body">
-                                <strong class="d-inline-block mb-2 text-success">Design</strong>
-                                <h5 class="card-title">Card title</h5>
-                                <div class="mb-1 text-muted">Nov 11</div>
+                                <strong class="d-inline-block mb-2 text-success"><?php echo $latest_news[0]->name ?></strong>
+                                <h5 class="card-title"><?php echo $latest_news[$x]->title ?></h5>
+                                <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                    echo getFormattedDateTime($latest_news[$x]->created_at); ?></div>
                                 <p class="card-text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Nostrum laboriosam consectetur distinctio qui nulla sint
-                                    iure corrupti. Libero, architecto eveniet.
+                                    <?php $htmlContent = json_decode($latest_news[$x]->content, true)['data'];
+                                    echo substr(getUnformattedTextFromHtml($htmlContent), 0, 300) . "..."; ?>
                                 </p>
                             </div>
 
                             <div class="card-body">
-                                <a href="#" class="card-link">Read More</a>
+                                <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $latest_news[$x]->n_id; ?>"
+                                   class="card-link">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <div class="card mb-4">
-                            <img src="../assets/weather-image-5.jpg" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <strong class="d-inline-block mb-2 text-success">Design</strong>
-                                <h5 class="card-title">Card title</h5>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Nostrum laboriosam consectetur distinctio qui nulla sint
-                                    iure corrupti. Libero, architecto eveniet.
-                                </p>
-                            </div>
+                <?php endfor; ?>
 
-                            <div class="card-body">
-                                <a href="#" class="card-link">Read More</a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+
+        <!-- South Asia Weather -->
+        <div class="row mb-2">
+            <div class="section-heading d-flex justify-content-between align-items-center py-4">
+                <h3 class="font-italic">South and Central Asia Weather</h3>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="card mb-4">
+                    <img src="../assets/<?php echo $asia_news[0]->cover_image ?>" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <strong class="d-inline-block mb-2 text-primary"><?php echo $asia_news[0]->name ?></strong>
+                        <h5 class="card-title"><?php echo $asia_news[0]->title ?></h5>
+                        <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                            echo getFormattedDateTime($asia_news[0]->created_at); ?></div>
+                        <p class="card-text">
+                            <?php $htmlContent = json_decode($asia_news[0]->content, true)['data'];
+                            echo substr(getUnformattedTextFromHtml($htmlContent), 0, 300) . "..."; ?>
+                        </p>
+                    </div>
+
+                    <div class="card-body">
+                        <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $asia_news[0]->n_id; ?>"
+                           class="card-link">Read More</a>
                     </div>
                 </div>
             </div>
+            <?php for ($x = 1; $x <= count($asia_news) - 1; $x++): ?>
 
-            <!-- South Asia Weather -->
-            <div class="row mb-2">
-                <div class="section-heading d-flex justify-content-between align-items-center py-4">
-                    <h3 class="font-italic">South and Central Asia Weather</h3>
-                </div>
-
-                <div class="col-lg-6 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-4.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="card mb-4">
-                        <img src="../assets/weather-image-5.jpg" class="card-img-top" alt="..." />
+                        <img src="../assets/<?php echo $asia_news[$x]->cover_image ?>" class="card-img-top" alt="..."/>
                         <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
+                            <strong class="d-inline-block mb-2 text-primary"><?php echo $asia_news[$x]->name ?></strong>
+                            <h5 class="card-title"><?php echo $asia_news[$x]->title ?></h5>
+                            <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                echo getFormattedDateTime($asia_news[$x]->created_at); ?></div>
                             <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
+                                <?php $htmlContent = json_decode($asia_news[$x]->content, true)['data'];
+                                echo substr(getUnformattedTextFromHtml($htmlContent), 0, 300) . "..."; ?>
                             </p>
                         </div>
 
                         <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
+                            <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $asia_news[$x]->n_id; ?>"
+                               class="card-link">Read More</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-1.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
+            <?php endfor; ?>
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
+        <!-- All Weather News -->
+        <div class="row mb-2">
+            <div class="section-heading d-flex justify-content-between align-items-center py-4">
+                <h3 class="font-italic">All Stories</h3>
             </div>
-
-            <!-- All Weather News -->
-            <div class="row mb-2">
-                <div class="section-heading d-flex justify-content-between align-items-center py-4">
-                    <h3 class="font-italic">All Stories</h3>
-                </div>
-
+            <?php foreach ($all_news as $a_news): ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="card mb-4">
-                        <img src="../assets/sports-image-2.jpg" class="card-img-top" alt="..." />
+                        <img src="../assets/<?php echo $a_news->cover_image ?>" class="card-img-top" alt="..."/>
                         <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
+                            <strong class="d-inline-block mb-2 text-primary"><?php echo $a_news->name ?></strong>
+                            <h5 class="card-title"><?php echo $a_news->title ?></h5>
+                            <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                echo getFormattedDateTime($a_news->created_at); ?></div>
                             <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
+                                <?php
+
+                                $htmlContent = json_decode($a_news->content, true)['data'];
+                                echo substr(getUnformattedTextFromHtml($htmlContent), 0, 200) . "...";
+                                ?>
                             </p>
                         </div>
 
                         <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
+                            <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $a_news->n_id; ?>"
+                               class="card-link">Read More</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-1.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
+            <?php endforeach; ?>
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-6.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
+        </div>
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-5.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <?php
+        include_once('../inc/upcoming_writers.html')
+        ?>
+    </main>
+</div>
 
-            <div class="row mb-2">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-2.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-3.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-4.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/weather-image-5.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <?php
-            include_once('../inc/upcoming_writers.html')
-            ?>
-        </main>
-    </div>
-
-    <?php include_once('../inc/footer.html') ?>
+<?php include_once('../inc/footer.html') ?>
 
 </body>
 

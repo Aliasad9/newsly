@@ -9,9 +9,9 @@ function getFormattedDateTime($strDatetime)
 
 function getUnformattedTextFromHtml($htmlString)
 {
-    $start = strrpos($htmlString, '<p>');
-    $end = strrpos($htmlString, '</p>');
-    return substr($htmlString, $start, $end - $start);
+    $start = strpos($htmlString, '<p>');
+    $end = strpos($htmlString, '</p>');
+    return strip_tags(substr($htmlString, $start, $end - $start));
 }
 function getTagsList($jsonTagList){
     $list =json_decode($jsonTagList, true)['tags'];

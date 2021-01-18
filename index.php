@@ -43,7 +43,7 @@ include_once('inc/header.php');
             include_once('config/config.php');
 
             $db_instance = new DBClass();
-            $rows = $db_instance->getCategoryBasedNews($pdo, 'sports', 3);
+            $rows = $db_instance->getSubCategoryBasedNews($pdo, 'trending', 3);
             ?>
             <?php foreach ($rows as $row): ?>
                 <div class="col-md-4">
