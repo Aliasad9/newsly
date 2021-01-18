@@ -18,6 +18,7 @@ function getTagsList($jsonTagList){
     return $list;
 }
 
+
 function handle_photo($attrName)
 {
     if (isset($_FILES[$attrName]) && $_FILES[$attrName]["error"] == 0) {
