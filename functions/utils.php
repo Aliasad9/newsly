@@ -18,11 +18,6 @@ function getTagsList($jsonTagList){
     return $list;
 }
 
-function getTagsList($jsonTagList){
-    $list =json_decode($jsonTagList, true)['tags'];
-    return $list;
-}
-
 function handle_photo($attrName)
 {
     if (isset($_FILES[$attrName]) && $_FILES[$attrName]["error"] == 0) {
