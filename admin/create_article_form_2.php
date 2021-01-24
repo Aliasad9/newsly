@@ -1,54 +1,58 @@
 <?php
+session_start();
 
-include_once('../functions/utils.php');
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if file was uploaded without errors
+if (!isset($_SESSION["email"])) {
+    header("Location: ./admin_login.php");
+} else {
+    include_once('../functions/utils.php');
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Check if file was uploaded without errors
 
 
-    function getEmptyFields()
-    {
-        $fieldsList = [];
-        if (!isset($_POST['author-name']) || ($_POST['author-name'] == '')) {
-            array_push($fieldsList, "author-name=0");
+        function getEmptyFields()
+        {
+            $fieldsList = [];
+            if (!isset($_POST['author-name']) || ($_POST['author-name'] == '')) {
+                array_push($fieldsList, "author-name=0");
+            }
+            if (!isset($_POST['author-info']) || ($_POST['author-info'] == '')) {
+                array_push($fieldsList, "author-info=0");
+            }
+            if (!isset($_FILES['author-image']) && $_FILES['author-image']["error"] == 0) {
+                array_push($fieldsList, "author-image=0");
+            }
+            if (!isset($_POST['title']) || ($_POST['title'] == '')) {
+                array_push($fieldsList, "title=0");
+            }
+            if (!isset($_POST['cover-image-caption']) || ($_POST['cover-image-caption'] == '')) {
+                array_push($fieldsList, "cover-image-caption=0");
+            }
+            if (!isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+                array_push($fieldsList, "photo=0");
+            }
+            if (!isset($_POST['category']) || ($_POST['category'] == '')) {
+                array_push($fieldsList, "category=0");
+            }
+            return $fieldsList;
+
         }
-        if (!isset($_POST['author-info']) || ($_POST['author-info'] == '')) {
-            array_push($fieldsList, "author-info=0");
+
+        $fields = getEmptyFields();
+        if (count($fields) > 0) {
+            header('Location: ./create_article_form_1.php?' . join('&', $fields));
+
+        } else {
+            $cover_image = handle_photo("photo");
+            $author_image = handle_photo("author-image");
+            echo "<script>" . "window.localStorage.setItem('cover-image', " . "'" . $cover_image . "'" . ");</script>";
+            echo "<script>" . "window.localStorage.setItem('author-image', " . "'" . $author_image . "'" . ");</script>";
+
         }
-        if (!isset($_FILES['author-image']) && $_FILES['author-image']["error"] == 0) {
-            array_push($fieldsList, "author-image=0");
-        }
-        if (!isset($_POST['title']) || ($_POST['title'] == '')) {
-            array_push($fieldsList, "title=0");
-        }
-        if (!isset($_POST['cover-image-caption']) || ($_POST['cover-image-caption'] == '')) {
-            array_push($fieldsList, "cover-image-caption=0");
-        }
-        if (!isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
-            array_push($fieldsList, "photo=0");
-        }
-        if (!isset($_POST['category']) || ($_POST['category'] == '')) {
-            array_push($fieldsList, "category=0");
-        }
-        return $fieldsList;
+
 
     }
-
-    $fields = getEmptyFields();
-    if (count($fields) > 0) {
-        header('Location: ./create_article_form_1.php?' . join('&', $fields));
-
-    } else {
-        $cover_image = handle_photo("photo");
-        $author_image = handle_photo("author-image");
-        echo "<script>" . "window.localStorage.setItem('cover-image', " . "'" . $cover_image . "'" . ");</script>";
-        echo "<script>" . "window.localStorage.setItem('author-image', " . "'" . $author_image . "'" . ");</script>";
-
-    }
-
 
 }
-
-
 ?>
 <head>
     <meta charset="utf-8"/>
@@ -88,6 +92,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Admin</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+                class="collapse navbar-collapse float-right"
+                id="navbarNavDropdown"
+        >
+            <ul class="navbar-nav ms-auto d-flex align-items-center">
+                
+                <li class="nav-item mx-2">
+                    <a
+                            class="btn btn-outline-danger btn-sm"
+                            aria-current="page"
+                            href="#"
+                    >Logout</a
+                    >
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 

@@ -14,7 +14,10 @@ include_once('../inc/header.php');
 
             <!-- TODO: Dynamically add background image -->
             <?php
-            $title = "Politics";
+            include_once('../functions/db_functions.php');
+            include_once('../config/config.php');
+            $db_instance = new DBClass();
+            $news_article = $db_instance->getCategorySubCategory($pdo, 'politics', 'featured', 1);
             include_once('../inc/featured_card.php')
             ?>
 
