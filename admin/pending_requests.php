@@ -95,7 +95,7 @@
                         </p>
                         <a
                             class="btn btn-sm btn-outline-primary me-2"
-                            href="../admin/pending_requests_details.html"
+                            href="pending_requests_details.php"
                             >View Details</a
                         >
                     </div>
@@ -121,7 +121,7 @@
                         </p>
                         <a
                             class="btn btn-sm btn-outline-primary me-2"
-                            href="../admin/pending_requests_details.html"
+                            href="pending_requests_details.php"
                             >View Details</a
                         >
                     </div>
