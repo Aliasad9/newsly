@@ -40,22 +40,8 @@ if (!isset($_SESSION["email"])) {
     <link href="/newsly/styles/style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Admin</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse float-right" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto d-flex align-items-center">
+<?php include_once ('../inc/admin_navbar_mini.html')?>
 
-                <li class="nav-item mx-2">
-                    <a class="btn btn-outline-danger btn-sm" aria-current="page" href="#">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <div class="container my-4">
     <div class="header mb-4">
         <p class="display-6">Write a New Article (1/2)</p>

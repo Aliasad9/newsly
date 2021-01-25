@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-$title = "The Team";
+$title = "Our Team";
 include_once('../inc/header.php');
 ?>
 
