@@ -51,23 +51,23 @@ $news_article = $db_instance->getCategoryBasedNewsR($pdo, $category, 2);
     <div class="p-4">
       <h4 class="font-italic">More Categories</h4>
       <ol class="list-unstyled mb-0">
-        <li><a class="link-primary" href="#">Politics</a></li>
-        <li><a class="link-primary" href="#">Fashion</a></li>
-        <li><a class="link-primary" href="#">Sports</a></li>
-        <li><a class="link-primary" href="#">Music</a></li>
-        <li><a class="link-primary" href="#">Weather</a></li>
-        <li><a class="link-primary" href="#">Technology</a></li>
-        <li><a class="link-primary" href="#">Business</a></li>
-        <li><a class="link-primary" href="#">Entertainment</a></li>
+        <li><a class="link-primary" href="/newsly/pages/politics_page.php">Politics</a></li>
+        <li><a class="link-primary" href="/newsly/pages/fashion_page.php">Fashion</a></li>
+        <li><a class="link-primary" href="/newsly/pages/sports_page.php">Sports</a></li>
+        <li><a class="link-primary" href="/newsly/pages/music_page.php">Music</a></li>
+        <li><a class="link-primary" href="/newsly/pages/weather_page.php">Weather</a></li>
+        <li><a class="link-primary" href="/newsly/pages/technology_page.php">Technology</a></li>
+        <li><a class="link-primary" href="/newsly/pages/business_page.php">Business</a></li>
+        <li><a class="link-primary" href="/newsly/pages/entertainment_page.php">Entertainment</a></li>
       </ol>
     </div>
 
     <div class="p-4">
       <h4 class="font-italic">Find Us on Social!</h4>
       <ol class="list-unstyled">
-        <li><a href="#">GitHub</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Facebook</a></li>
+          <li><a href="https://github.com/codewithfahad/newsly">GitHub</a></li>
+          <li><a  href="/newsly/pages/contact_us.php">Contact Us</a></li>
+          <li><a  href="/newsly/pages/advertise_with_us.php">Advertise With Us</a></li>
       </ol>
     </div>
   </div>

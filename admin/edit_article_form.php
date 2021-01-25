@@ -23,7 +23,7 @@ if (!isset($_SESSION["email"])) {
                     $contentJson
             );
             if($new){
-                header('location: ./news_dashboard_1.php');
+                header('location: ./news_dashboard_1.php?news=edit');
             }
 
         }else{
@@ -39,7 +39,7 @@ if (!isset($_SESSION["email"])) {
                 $contentJson
             );
             if($new){
-                header('location: ./news_dashboard_1.php');
+                header('location: ./news_dashboard_1.php?news=edit');
 
             }
 
