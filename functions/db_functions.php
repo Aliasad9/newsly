@@ -284,6 +284,7 @@ class DBClass
             $sql = 'UPDATE news SET title = ?, content = ?,  cover_image = ?, 
                  image_caption = ? WHERE id=?;';
             $stmt = $pdo->prepare($sql);
+
             if ($stmt) {
                 $stmt->execute([$title, $content,
                     $cover_image, $image_caption, $id]);
