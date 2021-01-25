@@ -35,29 +35,6 @@ $news_article = $db_instance->getCategoryBasedNewsR($pdo, $category, 2);
       </div>
         <?php endforeach;?>
 
-<!--      <div class="col-md-6">-->
-<!--        <div class="card mb-4">-->
-<!--          <img-->
-<!--            src="../assets/home-image-7.jpg"-->
-<!--            class="card-img-top"-->
-<!--            alt="..."-->
-<!--          />-->
-<!--          <div class="card-body">-->
-<!--            <h3 class="card-title">Card title</h3>-->
-<!--            <p class="card-text">-->
-<!--              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse,-->
-<!--              saepe a! Enim tenetur in possimus eveniet, qui aliquid consequatur-->
-<!--              esse amet a nemo, soluta, sit quasi facilis recusandae adipisci-->
-<!--              praesentium? Quaerat optio animi ullam magnam placeat tempora,-->
-<!--              voluptatem commodi corporis.-->
-<!--            </p>-->
-<!--          </div>-->
-<!---->
-<!--          <div class="card-body">-->
-<!--            <a href="#" class="card-link">Read More</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
   </div>
 
