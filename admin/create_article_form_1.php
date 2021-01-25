@@ -60,7 +60,7 @@ if (!isset($_SESSION["email"])) {
     <div class="header mb-4">
         <p class="display-6">Write a New Article (1/2)</p>
     </div>
-    <form method="POST" action="create_article_form_2.php" enctype="multipart/form-data" onsubmit="return saveForm()">
+    <form method="POST" action="create_article_form_2.php?image_handled=yes" enctype="multipart/form-data" onsubmit="return saveForm()">
         <div class="mb-3">
             <label for="author-name" class="form-label">Author Name</label>
 

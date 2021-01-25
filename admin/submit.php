@@ -77,8 +77,8 @@ function submitData()
     $status = $db_instance->addNewsArticle($pdo, $title, $authorName, $authorInfo, $authorImage,
         $coverImage, $imageCaption, $contentJson, $subCategory, $category, "{\"tags\": $tagsJson}");
     if ($status) {
-        echo "Success";
-        echo '<script type="text/javascript">', 'clearMemory();', '</script>';
+        header('location: ./news_dashboard_1.php?news=create');
+
     } else {
         echo "LPC";
     }

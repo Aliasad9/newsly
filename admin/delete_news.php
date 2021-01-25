@@ -10,7 +10,7 @@ if (!isset($_SESSION["email"])) {
         include_once('../functions/db_functions.php');
         $db_instance = new DBClass();
         $result = $db_instance->deleteNewsById($pdo, $news_id);
-        echo "<script>history.back();</script>";
+        header("location: ./news_dashboard_1.php?news=delete");
     }else{
         echo "<script>history.back();</script>";
 

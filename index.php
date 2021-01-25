@@ -7,6 +7,7 @@ include_once('inc/header.php');
 
 
 <body>
+
     <div class="container">
         <?php
         include_once('./inc/navbar.html');
@@ -39,6 +40,7 @@ include_once('inc/header.php');
                                 <?php echo substr($news->title, 0, 40) . "..." ?>
                             </h1>
                             <p class="lead my-3">
+
                                 <?php
                                 include_once('./functions/utils.php');
                                 $htmlContent = json_decode($news->content, true)['data'];
@@ -58,6 +60,7 @@ include_once('inc/header.php');
                 <div class="section-heading d-flex justify-content-between align-items-center py-4 flex-wrap">
                     <h3 class="font-italic">Trending Stories</h3>
                 </div>
+
 
 
                 <?php foreach ($rows as $row) : ?>
@@ -99,6 +102,7 @@ include_once('inc/header.php');
                     </a>
                 </div>
 
+
                 <?php foreach ($politics_news as $a_news) : ?>
                     <div class="col-md-4">
                         <div class="card mb-4">
@@ -122,7 +126,9 @@ include_once('inc/header.php');
                             </div>
                         </div>
                     </div>
+
                 <?php endforeach; ?>
+
 
             </div>
 
@@ -158,7 +164,9 @@ include_once('inc/header.php');
                             </div>
                         </div>
                     </div>
+
                 <?php endforeach; ?>
+
             </div>
 
             <!-- Sports Section -->
@@ -223,12 +231,14 @@ include_once('inc/header.php');
                                 </p>
                             </div>
 
+
                             <div class="card-body">
                                 <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $a_news->n_id; ?>" class="card-link">Read More</a>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+
 
             </div>
 
@@ -340,6 +350,8 @@ include_once('inc/header.php');
                 <?php endforeach; ?>
 
 
+
+
             </div>
 
             <!-- Entertainment Section -->
@@ -350,6 +362,7 @@ include_once('inc/header.php');
                         <h6>More Stories</h6>
                     </a>
                 </div>
+
                 <?php foreach ($entertainment_news as $a_news) : ?>
                     <div class="col-md-4">
                         <div class="card mb-4">
@@ -374,6 +387,7 @@ include_once('inc/header.php');
                         </div>
                     </div>
                 <?php endforeach; ?>
+
             </div>
 
             <?php
