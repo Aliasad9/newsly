@@ -207,7 +207,8 @@ include_once('../inc/header.php');
         </div>
 
         <?php
-        include_once('../inc/upcoming_writers.html')
+        $category = "music";
+        include_once('../inc/upcoming_writers.php')
         ?>
     </main>
 </div>

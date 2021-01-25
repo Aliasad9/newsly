@@ -137,7 +137,11 @@ include_once('../inc/header.php');
             <?php endfor; ?>
         </div>
         <?php
-        include_once('../inc/upcoming_writers.html')
+
+        $category = "entertainment";
+
+
+        include_once('../inc/upcoming_writers.php')
         ?>
     </main>
 </div>

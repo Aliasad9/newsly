@@ -156,7 +156,10 @@ include_once('../inc/header.php');
 
 
         <?php
-        include_once('../inc/upcoming_writers.html')
+
+        $category = "politics";
+
+        include_once('../inc/upcoming_writers.php')
         ?>
     </main>
 </div>
