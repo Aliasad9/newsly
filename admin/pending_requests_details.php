@@ -11,6 +11,7 @@ include_once('../functions/db_functions.php');
 include_once('../config/config.php');
 
 $db_instance = new DBClass();
+
 if (!isset($_GET['id'])) {
     header('Location: ./pending_requests.php');
 }
@@ -19,6 +20,7 @@ if ($row == false) {
     header('Location: ./pending_requests.php');
 
 }
+
 ?>
 
 <head>
@@ -95,6 +97,7 @@ if ($row == false) {
                 </li>
             </ul>
         </div>
+
     </div>
 </nav>
 <div class="container my-4">
@@ -140,6 +143,7 @@ if ($row == false) {
                         ?>
 
                     </p>
+
                 </div>
             </div>
         </div>
