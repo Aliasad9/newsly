@@ -11,9 +11,18 @@ include_once('../inc/header.php');
         include_once('../inc/navbar.html')
         ?>
         <main class="container">
-            <!-- TODO: Dynamically add background image -->
+
             <?php
-            include_once('../inc/featured_card.php')
+            include_once('../functions/db_functions.php');
+            include_once('../config/config.php');
+
+            $db_instance = new DBClass();
+            $news_article = $db_instance->getCategorySubCategory($pdo, 'technology', 'featured', 1);
+            include_once('../inc/featured_card.php');
+            $giants_news = $db_instance->getCategorySubCategory($pdo, 'technology', 'giants', 4);
+            $latest_news = $db_instance->getCategorySubCategory($pdo, 'technology', 'latest', 4);
+            $all_news = $db_instance->getCategoryBasedNews($pdo, 'technology',6);
+
             ?>
 
             <!-- 4 Column Grid -->
@@ -21,83 +30,28 @@ include_once('../inc/header.php');
                 <div class="section-heading d-flex justify-content-between align-items-center py-4">
                     <h3 class="font-italic">Latest Tech News</h3>
                 </div>
-
+                <?php foreach ($latest_news as $news):?>
                 <div class="col-lg-3 col-md-6">
                     <div class="card mb-4">
-                        <img src="../assets/fashion-image-2.jpg" class="card-img-top" alt="..." />
+                        <img src="../assets/<?php echo $news->cover_image?>" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
+                            <strong class="d-inline-block mb-2 text-primary"><?php echo $news->name?></strong>
+                            <h5 class="card-title"><?php echo $news->title?></h5>
+                            <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                echo getFormattedDateTime($news->created_at); ?></div>
                             <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
+                                <?php $htmlContent = json_decode($news->content, true)['data'];
+                                echo substr(getUnformattedTextFromHtml($htmlContent), 0, 150) . "..."; ?>
                             </p>
                         </div>
 
                         <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
+                            <a <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $news->n_id; ?>" class="card-link">Read More</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/tech-image-1.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
+                <?php endforeach;?>
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/tech-image-4.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/tech-image-5.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Tech Giants -->
@@ -107,64 +61,46 @@ include_once('../inc/header.php');
                 </div>
                 <div class="big-card col-lg-12 col-md-12">
                     <div class="card mb-4">
-                        <img src="../assets/tech-image-1.jpg" class="card-img-top" alt="..." />
+                        <img src="../assets/<?php echo $giants_news[0]->cover_image; ?>" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-success">Design</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
+                            <strong class="d-inline-block mb-2 text-success"><?php echo $giants_news[0]->name; ?></strong>
+                            <h5 class="card-title"><?php echo $giants_news[0]->title; ?></h5>
+                            <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                echo getFormattedDateTime($giants_news[0]->created_at); ?></div>
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                Consequuntur totam fuga, obcaecati provident nam eligendi
-                                corrupti laboriosam doloremque eum recusandae voluptatem unde
-                                magni voluptate iusto beatae adipisci reiciendis neque fugiat
-                                consectetur. Assumenda, temporibus. Eius, dignissimos. Officia
-                                fugit ducimus repudiandae? Sapiente, esse quaerat. Labore,
-                                perferendis iste explicabo laboriosam unde excepturi cum?
+                                <?php $htmlContent = json_decode($giants_news[0]->content, true)['data'];
+                                echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500) . "..."; ?>
                             </p>
-                            <a href="#" class="card-link">Read More</a>
+                            <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $giants_news[0]->n_id; ?>" class="card-link">Read More</a>
                         </div>
                         <div class="card-body"></div>
                     </div>
                 </div>
                 <div class="row col-lg-12 col-md-12 px-0 mx-0">
+                    <?php for ($x = 0; $x <= count($giants_news) - 1; $x++): ?>
+                    <?php if ($x != 0): ?>
                     <div class="col-lg-6 col-md-6 mb-3">
                         <div class="card mb-4">
-                            <img src="../assets/tech-image-6.jpg" class="card-img-top" alt="..." />
+                            <img src="../assets/<?php echo $giants_news[$x]->cover_image; ?>" class="card-img-top" alt="..." />
                             <div class="card-body">
-                                <strong class="d-inline-block mb-2 text-success">Design</strong>
-                                <h5 class="card-title">Card title</h5>
-                                <div class="mb-1 text-muted">Nov 11</div>
+                                <strong class="d-inline-block mb-2 text-success"><?php echo $giants_news[$x]->name; ?></strong>
+                                <h5 class="card-title"><?php echo $giants_news[$x]->title; ?></h5>
+                                <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                    echo getFormattedDateTime($giants_news[$x]->created_at); ?></div>
                                 <p class="card-text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Nostrum laboriosam consectetur distinctio qui nulla sint
-                                    iure corrupti. Libero, architecto eveniet.
+                                    <?php $htmlContent = json_decode($giants_news[$x]->content, true)['data'];
+                                    echo substr(getUnformattedTextFromHtml($htmlContent), 0, 250) . "..."; ?>
                                 </p>
                             </div>
 
                             <div class="card-body">
-                                <a href="#" class="card-link">Read More</a>
+                                <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $giants_news[$x]->n_id; ?>" class="card-link">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="card mb-4">
-                            <img src="../assets/tech-image-4.jpg" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <strong class="d-inline-block mb-2 text-success">Design</strong>
-                                <h5 class="card-title">Card title</h5>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Nostrum laboriosam consectetur distinctio qui nulla sint
-                                    iure corrupti. Libero, architecto eveniet.
-                                </p>
-                            </div>
+                        <?php endif; ?>
+                    <?php endfor; ?>
 
-                            <div class="card-body">
-                                <a href="#" class="card-link">Read More</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -174,68 +110,37 @@ include_once('../inc/header.php');
                     <h3 class="font-italic">All Stories</h3>
                 </div>
 
-                <div class="col-lg-6 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/tech-image-2.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
+                <?php foreach ($all_news as $a_news): ?>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="../assets/<?php echo $a_news->cover_image ?>" class="card-img-top" alt="..."/>
+                            <div class="card-body">
+                                <strong class="d-inline-block mb-2 text-success"><?php echo $a_news->name ?></strong>
+                                <h5 class="card-title"><?php echo $a_news->title ?></h5>
+                                <div class="mb-1 text-muted"><?php include_once('../functions/utils.php');
+                                    echo getFormattedDateTime($a_news->created_at); ?></div>
+                                <p class="card-text">
+                                    <?php
 
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
+                                    $htmlContent = json_decode($a_news->content, true)['data'];
+                                    echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500)."...";
+                                    ?>
+                                </p>
+                            </div>
+
+                            <div class="card-body">
+                                <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $a_news->n_id; ?>"
+                                   class="card-link">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card mb-4">
-                        <img src="../assets/tech-image-3.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="card mb-4">
-                        <img src="../assets/tech-image-4.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <strong class="d-inline-block mb-2 text-primary">Sports</strong>
-                            <h5 class="card-title">Card title</h5>
-                            <div class="mb-1 text-muted">Nov 11</div>
-                            <p class="card-text">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Nostrum laboriosam consectetur distinctio qui nulla sint iure
-                                corrupti. Libero, architecto eveniet.
-                            </p>
-                        </div>
-
-                        <div class="card-body">
-                            <a href="#" class="card-link">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
 
             </div>
 
             <?php
-            include_once('../inc/upcoming_writers.html')
+            $category = "technology";
+            include_once('../inc/upcoming_writers.php')
             ?>
         </main>
     </div>

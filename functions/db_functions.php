@@ -123,6 +123,55 @@ class DBClass
             return $news;
         }
     }
+    public function getCategoryBasedNewsR($pdo, $categoryName, $limit = 0,$order=0)
+    {
+
+        if ($limit == 0) {
+            if ($order==0){
+                $sql = 'SELECT news.id AS n_id, news.title AS title, news.content AS content, 
+                    news.created_at AS created_at, news.author_name AS author_name, news.author_image 
+                    AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
+                    news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
+                    news JOIN category ON news.category_id = category.id WHERE category.name = :categoryName 
+                    ORDER BY RAND() DESC; ';
+            }else{
+                $sql = 'SELECT news.id AS n_id, news.title AS title, news.content AS content, 
+                    news.created_at AS created_at, news.author_name AS author_name, news.author_image 
+                    AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
+                    news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
+                    news JOIN category ON news.category_id = category.id WHERE category.name = :categoryName 
+                    ORDER BY created_at DESC; ';
+            }
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['categoryName' => $categoryName]);
+            $news = $stmt->fetchAll();
+            return $news;
+        } else {
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            if ($order == 0){
+                $sql = 'SELECT news.id AS n_id, news.title AS title, news.content AS content, 
+                    news.created_at AS created_at, news.author_name AS author_name, news.author_image 
+                    AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
+                    news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
+                    news JOIN category ON news.category_id = category.id WHERE category.name = ? 
+                    ORDER BY RAND() DESC LIMIT ?; ';
+            }else{
+                $sql = 'SELECT news.id AS n_id, news.title AS title, news.content AS content, 
+                    news.created_at AS created_at, news.author_name AS author_name, news.author_image 
+                    AS author_image, news.author_info AS author_info, news.cover_image AS cover_image, 
+                    news.image_caption AS image_caption, news.tags AS tags, category.name AS name FROM 
+                    news JOIN category ON news.category_id = category.id WHERE category.name = ? 
+                    ORDER BY news.created_at DESC LIMIT ?; ';
+            }
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$categoryName, $limit]);
+            $news = $stmt->fetchAll();
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+            return $news;
+        }
+    }
 
     public function getNewsById($pdo, $id)
     {
