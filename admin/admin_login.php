@@ -1,31 +1,36 @@
 <?php
 session_start();
-if (isset($_POST["submit"])) {
-    if (empty($_POST["email"])) {
-        $eMessage = '<label>Email field cannot be empty</label>';
-    } else if (empty($_POST["password"])) {
-        $pMessage = '<label>Password field cannot be empty</label>';
-
-    } else {
-        $email = htmlspecialchars($_POST['email']);
-        $password = htmlspecialchars($_POST['password']);
-
-        include_once('../functions/db_functions.php');
-        include_once('../config/config.php');
-
-        $db_instance = new DBClass();
-        $is_valid = $db_instance->getUser($pdo, $email, $password);
-
-        if ($is_valid) {
-
-            $_SESSION['email'] = $email;
-            header("location: ./login_success.php");
+if(isset($_SESSION['email'])){
+    header('location: ./news_dashboard_1.php');
+}else{
+    if (isset($_POST["submit"])) {
+        if (empty($_POST["email"])) {
+            $eMessage = '<label>Email field cannot be empty</label>';
+        } else if (empty($_POST["password"])) {
+            $pMessage = '<label>Password field cannot be empty</label>';
 
         } else {
-            $pMessage = "Invalid Credentials";
+            $email = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
+
+            include_once('../functions/db_functions.php');
+            include_once('../config/config.php');
+
+            $db_instance = new DBClass();
+            $is_valid = $db_instance->getUser($pdo, $email, $password);
+
+            if ($is_valid) {
+
+                $_SESSION['email'] = $email;
+                header("location: ./login_success.php");
+
+            } else {
+                $pMessage = "Invalid Credentials";
+            }
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -68,24 +73,22 @@ if (isset($_POST["submit"])) {
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Admin</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="../index.php">Newsly</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse float-right" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto d-flex align-items-center">
-                <li class="nav-item mx-2">
-                    <a class="nav-link" aria-current="page" href="../admin/create_article_form_1.php"><i class="px-2 fas fa-pencil-alt"></i>Write an
-                        Article</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="btn btn-outline-danger btn-sm" aria-current="page" href="#">Logout</a>
-                </li>
-            </ul>
-        </div>
+
+
     </div>
 </nav>
-
 <div class="container my-4">
     <div class="card" style="max-width: 32rem; margin: auto;">
         <div class="card-body">
