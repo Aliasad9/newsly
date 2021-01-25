@@ -284,6 +284,7 @@ class DBClass
             $sql = 'UPDATE news SET title = ?, content = ?,  cover_image = ?, 
                  image_caption = ? WHERE id=?;';
             $stmt = $pdo->prepare($sql);
+
             if ($stmt) {
                 $stmt->execute([$title, $content,
                     $cover_image, $image_caption, $id]);
@@ -365,6 +366,14 @@ class DBClass
             error_log($mes);
             return false;
         }
+    }
+    public function getContactUsById($pdo, $id)
+    {
+        $sql = 'SELECT * FROM contact_us WHERE id= :id ORDER BY created_at DESC;';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $news = $stmt->fetch();
+        return $news;
     }
 
     public function getContactUs($pdo)

@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 
+<?php
+session_start();
+
+if (!isset($_SESSION["email"])) {
+    header("Location: ./admin_login.php");
+}
+
+include_once('../functions/db_functions.php');
+include_once('../config/config.php');
+
+$db_instance = new DBClass();
+$rows = $db_instance->getContactUs($pdo);
+?>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -83,45 +97,24 @@
         </p>
 
         <div class="categories-section my-5">
-            <div class="card bg-light my-3">
-                <div class="card-body row align-items-center">
-                    <div class="content col-md-9">
-                        <h5 class="card-title">
-                            Ali Asad
-                        </h5>
-                        <p class="card-text text-muted">
-                            <span class="text-dark">From:</span>
-                            aliasad@gmail.com
-                        </p>
-                        <a
-                            class="btn btn-sm btn-outline-primary me-2"
-                            href="pending_requests_details.php"
-                            >View Details</a
-                        >
-                    </div>
-                    <div
-                        class="col-md-3 d-flex justify-content-md-end justify-content-start mt-md-0 mt-3"
-                    >
-                        <p class="card-text text-muted">
-                            7 Jan, 2021
-                        </p>
-                    </div>
-                </div>
-            </div>
+
+            <?php foreach ($rows as $row):?>
 
             <div class="card bg-light my-3">
                 <div class="card-body row align-items-center">
                     <div class="content col-md-9">
                         <h5 class="card-title">
-                            Fahad Imran
+
+                            <?php echo $row->subject?>
                         </h5>
                         <p class="card-text text-muted">
                             <span class="text-dark">From:</span>
-                            fahadimran@gmail.com
+                            <?php echo $row->email?>
                         </p>
                         <a
                             class="btn btn-sm btn-outline-primary me-2"
-                            href="pending_requests_details.php"
+                            href="pending_requests_details.php?id=<?php echo $row->id?>"
+
                             >View Details</a
                         >
                     </div>
@@ -129,11 +122,20 @@
                         class="col-md-3 d-flex justify-content-md-end justify-content-start mt-md-0 mt-3"
                     >
                         <p class="card-text text-muted">
-                            12 Dec, 2020
+
+                            <?php
+                            include_once('../functions/utils.php');
+                            echo getFormattedDateTime($row->created_at);
+                            ?>
+
                         </p>
                     </div>
                 </div>
             </div>
+
+            <?php endforeach;?>
+
+
         </div>
     </div>
 </body>

@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 
+<?php
+session_start();
+
+if (!isset($_SESSION["email"])) {
+    header("Location: ./admin_login.php");
+}
+
+include_once('../functions/db_functions.php');
+include_once('../config/config.php');
+
+$db_instance = new DBClass();
+$row = $db_instance->getContactUsById($pdo,htmlspecialchars($_GET['id']));
+?>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,30 +101,37 @@
                 <div class="card-body row align-items-top">
                     <div class="content col-md-9">
                         <h4 class="card-title">
-                            <span class="text-dark fw-normal">Ali Asad</span>
+
+                            <span class="text-dark fw-normal"><?php echo $row->subject;?></span>
+
                         </h4>
                         <h6 class="card-title pt-2 pb-3">
                             From:
                             <span class="text-muted fw-normal"
-                                >aliasad@gmail.com</span
+
+                                ><?php echo $row->email;?></span
+
                             >
                         </h6>
                         <h6 class="card-title">
                             Message:
                         </h6>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Veniam velit provident eius! Omnis doloribus
-                            consequuntur pariatur dolore in commodi, consequatur
-                            culpa, accusamus suscipit nihil, sunt beatae saepe!
-                            Fugit, debitis fuga?
+
+                            <?php echo $row->content;?>
+
                         </p>
                     </div>
                     <div
                         class="col-md-3 d-flex justify-content-md-end justify-content-start mt-md-0 mt-3"
                     >
                         <p class="card-text text-muted">
-                            7 Jan, 2021
+
+                            <?php
+                            include_once('../functions/utils.php');
+                            echo getFormattedDateTime($row->created_at);
+                            ?>
+
                         </p>
                     </div>
                 </div>

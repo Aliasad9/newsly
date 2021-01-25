@@ -13,7 +13,7 @@ if (!isset($_SESSION["email"])) {
         $old = $db_instance->getNewsById($pdo, $news_id);
         $content = addcslashes($_POST['content'], '"');
         $contentJson = "{\"data\":\"$content\"}";
-        if (!isset($_FILES['photo'])) {
+        if (!isset($_FILES['photo']) || !isset($_POST['photo'])) {
             $new = $db_instance->updateNewsArticle(
                     $pdo,
                     $news_id,
@@ -29,6 +29,7 @@ if (!isset($_SESSION["email"])) {
         }else{
 
             include_once('../functions/utils.php');
+
             $cover_image = handle_photo("photo");
             $new = $db_instance->updateNewsArticle($pdo,
                 $news_id,
