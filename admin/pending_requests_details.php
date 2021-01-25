@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <?php
 session_start();
 
@@ -12,6 +13,7 @@ include_once('../config/config.php');
 $db_instance = new DBClass();
 $row = $db_instance->getContactUsById($pdo,htmlspecialchars($_GET['id']));
 ?>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -99,29 +101,37 @@ $row = $db_instance->getContactUsById($pdo,htmlspecialchars($_GET['id']));
                 <div class="card-body row align-items-top">
                     <div class="content col-md-9">
                         <h4 class="card-title">
+
                             <span class="text-dark fw-normal"><?php echo $row->subject;?></span>
+
                         </h4>
                         <h6 class="card-title pt-2 pb-3">
                             From:
                             <span class="text-muted fw-normal"
+
                                 ><?php echo $row->email;?></span
+
                             >
                         </h6>
                         <h6 class="card-title">
                             Message:
                         </h6>
                         <p>
+
                             <?php echo $row->content;?>
+
                         </p>
                     </div>
                     <div
                         class="col-md-3 d-flex justify-content-md-end justify-content-start mt-md-0 mt-3"
                     >
                         <p class="card-text text-muted">
+
                             <?php
                             include_once('../functions/utils.php');
                             echo getFormattedDateTime($row->created_at);
                             ?>
+
                         </p>
                     </div>
                 </div>

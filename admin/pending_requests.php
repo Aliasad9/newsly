@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <?php
 session_start();
 
@@ -12,6 +13,7 @@ include_once('../config/config.php');
 $db_instance = new DBClass();
 $rows = $db_instance->getContactUs($pdo);
 ?>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,11 +97,14 @@ $rows = $db_instance->getContactUs($pdo);
         </p>
 
         <div class="categories-section my-5">
+
             <?php foreach ($rows as $row):?>
+
             <div class="card bg-light my-3">
                 <div class="card-body row align-items-center">
                     <div class="content col-md-9">
                         <h5 class="card-title">
+
                             <?php echo $row->subject?>
                         </h5>
                         <p class="card-text text-muted">
@@ -109,6 +114,7 @@ $rows = $db_instance->getContactUs($pdo);
                         <a
                             class="btn btn-sm btn-outline-primary me-2"
                             href="pending_requests_details.php?id=<?php echo $row->id?>"
+
                             >View Details</a
                         >
                     </div>
@@ -116,15 +122,19 @@ $rows = $db_instance->getContactUs($pdo);
                         class="col-md-3 d-flex justify-content-md-end justify-content-start mt-md-0 mt-3"
                     >
                         <p class="card-text text-muted">
+
                             <?php
                             include_once('../functions/utils.php');
                             echo getFormattedDateTime($row->created_at);
                             ?>
+
                         </p>
                     </div>
                 </div>
             </div>
+
             <?php endforeach;?>
+
 
         </div>
     </div>
