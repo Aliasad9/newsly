@@ -18,7 +18,7 @@ if (!isset($_SESSION["email"])) {
             if (!isset($_POST['author-info']) || ($_POST['author-info'] == '')) {
                 array_push($fieldsList, "author-info=0");
             }
-            if (!isset($_FILES['author-image']) && $_FILES['author-image']["error"] == 0) {
+            if ((!isset($_FILES['author-image']) && $_FILES['author-image']["error"] == 0)) {
                 array_push($fieldsList, "author-image=0");
             }
             if (!isset($_POST['title']) || ($_POST['title'] == '')) {
@@ -27,7 +27,7 @@ if (!isset($_SESSION["email"])) {
             if (!isset($_POST['cover-image-caption']) || ($_POST['cover-image-caption'] == '')) {
                 array_push($fieldsList, "cover-image-caption=0");
             }
-            if (!isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+            if ((!isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0)) {
                 array_push($fieldsList, "photo=0");
             }
             if (!isset($_POST['category']) || ($_POST['category'] == '')) {
@@ -38,12 +38,20 @@ if (!isset($_SESSION["email"])) {
         }
 
         $fields = getEmptyFields();
+        $cover_image = handle_photo("photo");
+        $author_image = handle_photo("author-image");
+        if (($cover_image==null)||($author_image==null)){
+            array_push($fields, "photo=0");
+            array_push($fields, "author-image=0");
+
+        }
+
         if (count($fields) > 0) {
             header('Location: ./create_article_form_1.php?' . join('&', $fields));
 
         } else {
-            $cover_image = handle_photo("photo");
-            $author_image = handle_photo("author-image");
+
+
             echo "<script>" . "window.localStorage.setItem('cover-image', " . "'" . $cover_image . "'" . ");</script>";
             echo "<script>" . "window.localStorage.setItem('author-image', " . "'" . $author_image . "'" . ");</script>";
 

@@ -367,6 +367,14 @@ class DBClass
             return false;
         }
     }
+    public function getContactUsById($pdo, $id)
+    {
+        $sql = 'SELECT * FROM contact_us WHERE id= :id ORDER BY created_at DESC;';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $news = $stmt->fetch();
+        return $news;
+    }
 
     public function getContactUs($pdo)
     {
