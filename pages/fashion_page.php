@@ -11,7 +11,6 @@ include_once('../inc/header.php');
         include_once('../inc/navbar.html')
         ?>
         <main class="container">
-            <!-- TODO: Dynamically add background image -->
             <?php
             include_once('../functions/db_functions.php');
             include_once('../config/config.php');
@@ -44,6 +43,11 @@ include_once('../inc/header.php');
                                 <?php $htmlContent = json_decode($news->content, true)['data'];
                                 echo substr(getUnformattedTextFromHtml($htmlContent), 0, 150) . "..."; ?>
                             </p>
+                            <?php foreach (getTagsList($news->tags) as $t) : ?>
+
+                                <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                            <?php endforeach; ?>
                         </div>
 
                         <div class="card-body">
@@ -73,6 +77,11 @@ include_once('../inc/header.php');
                                 <?php $htmlContent = json_decode($news->content, true)['data'];
                                 echo substr(getUnformattedTextFromHtml($htmlContent), 0, 150) . "..."; ?>
                             </p>
+                            <?php foreach (getTagsList($news->tags) as $t) : ?>
+
+                                <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                            <?php endforeach; ?>
                         </div>
 
                         <div class="card-body">
@@ -106,6 +115,11 @@ include_once('../inc/header.php');
                                     echo substr(getUnformattedTextFromHtml($htmlContent), 0, 150)."...";
                                     ?>
                                 </p>
+                                <?php foreach (getTagsList($a_news->tags) as $t) : ?>
+
+                                    <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                                <?php endforeach; ?>
                             </div>
 
                             <div class="card-body">

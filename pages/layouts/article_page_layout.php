@@ -22,7 +22,8 @@ if (isset($_GET['id'])) {
 <body>
 <div class="container">
     <?php
-    include_once('../../inc/navbar.html')
+    include_once('../../inc/navbar.html');
+    include_once ('../../functions/utils.php');
     ?>
 
     <!-- Big Featured Card -->
@@ -39,6 +40,11 @@ if (isset($_GET['id'])) {
             ?>
         </h1>
     </div>
+    <?php foreach (getTagsList($result->tags) as $t) : ?>
+
+        <a href="../all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+    <?php endforeach; ?>
 
     <!-- Author Info -->
     <div class="author-info row mt-5">
@@ -99,6 +105,7 @@ if (isset($_GET['id'])) {
                 <div class="card-body">
                     <strong class="d-inline-block mb-2 text-success"><?php echo $news->name?></strong>
                     <h5 class="card-title"><?php echo $news->title?></h5>
+
                     <div class="mb-1 text-muted"><?php
                         include_once('../../functions/utils.php');
                         echo getFormattedDateTime($news->created_at);
@@ -110,6 +117,11 @@ if (isset($_GET['id'])) {
                         echo substr(getUnformattedTextFromHtml($htmlContent), 0, 200) . "...";
                         ?>
                     </p>
+                    <?php foreach (getTagsList($news->tags) as $t) : ?>
+
+                        <a href="../all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                    <?php endforeach; ?>
                 </div>
 
                 <div class="card-body">

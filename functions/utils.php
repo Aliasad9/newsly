@@ -34,35 +34,31 @@ function handle_photo($attrName)
         $filesize = $_FILES[$attrName]["size"];
 
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!array_key_exists($ext, $allowed)) die("Error: Please select a valid file format.");
+        if (!array_key_exists($ext, $allowed)){
+        return null;
+        }
 
         $maxsize = 5 * 1024 * 1024;
-        if ($filesize > $maxsize) die("Error: File size is larger than the allowed limit.");
+        if ($filesize > $maxsize) {
+            return null;
+        }
 
         if (in_array($filetype, $allowed)) {
             $new_filename = (explode(".", $filename))[0] . uniqid('_') . time() . '.' . $ext;
             try {
                 move_uploaded_file($_FILES[$attrName]["tmp_name"], "../assets/" . $new_filename);
-                echo "Your file was uploaded successfully.";//TODO: Flash message
                 return $new_filename;
             } catch (Exception $e) {
-                echo $e;
+
                 return null;
             }
         } else {
-            echo "Error: There was a problem uploading your file. Please try again.";
             return null;
         }
     } else {
-        echo "Error: " . $_FILES[$attrName]["error"];
         return null;
     }
 }
-
-//TODO: send email for advertise with us
-
-//            include_once ('functions/utils.php');
-//            send_email("aliasad6521@gmail.com","test","content");
 
 function send_email($to, $subject, $message)
 {

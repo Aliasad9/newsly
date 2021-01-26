@@ -43,6 +43,11 @@ include_once('../inc/header.php');
                                 <?php $htmlContent = json_decode($news->content, true)['data'];
                                 echo substr(getUnformattedTextFromHtml($htmlContent), 0, 150) . "..."; ?>
                             </p>
+                            <?php foreach (getTagsList($news->tags) as $t) : ?>
+
+                                <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                            <?php endforeach; ?>
                         </div>
 
                         <div class="card-body">
@@ -71,6 +76,11 @@ include_once('../inc/header.php');
                                 <?php $htmlContent = json_decode($giants_news[0]->content, true)['data'];
                                 echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500) . "..."; ?>
                             </p>
+                            <?php foreach (getTagsList($giants_news[0]->tags) as $t) : ?>
+
+                                <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                            <?php endforeach; ?>
                             <a href="/newsly/pages/layouts/article_page_layout.php?id=<?php echo $giants_news[0]->n_id; ?>" class="card-link">Read More</a>
                         </div>
                         <div class="card-body"></div>
@@ -91,6 +101,11 @@ include_once('../inc/header.php');
                                     <?php $htmlContent = json_decode($giants_news[$x]->content, true)['data'];
                                     echo substr(getUnformattedTextFromHtml($htmlContent), 0, 250) . "..."; ?>
                                 </p>
+                                <?php foreach (getTagsList($giants_news[$x]->tags) as $t) : ?>
+
+                                    <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                                <?php endforeach; ?>
                             </div>
 
                             <div class="card-body">
@@ -126,6 +141,11 @@ include_once('../inc/header.php');
                                     echo substr(getUnformattedTextFromHtml($htmlContent), 0, 500)."...";
                                     ?>
                                 </p>
+                                <?php foreach (getTagsList($a_news->tags) as $t) : ?>
+
+                                    <a href="./all_tag_posts_page.php?tag=<?php echo $t; ?>" class="text-muted fst-italic text-decoration-none me-1">#<?php echo $t ?></a>
+
+                                <?php endforeach; ?>
                             </div>
 
                             <div class="card-body">
