@@ -43,6 +43,13 @@ if (!isset($_SESSION["email"])) {
 <?php include_once ('../inc/admin_navbar_mini.html')?>
 
 <div class="container my-4">
+    <?php if(isset($_GET['handle_image'])):?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Invalid image or empty image field!
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    <?php endif;?>
     <div class="header mb-4">
         <p class="display-6">Write a New Article (1/2)</p>
     </div>
